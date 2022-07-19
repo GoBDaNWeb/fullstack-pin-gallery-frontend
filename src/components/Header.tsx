@@ -44,7 +44,7 @@ const Header = () => {
                             {
                                 currentUser?.avatarUrl
                                 ? <img 
-                                    src={`http://localhost:7777${currentUser?.avatarUrl}`} 
+                                    src={`${process.env.REACT_APP_API_URL}${currentUser?.avatarUrl}`} 
                                     alt="avatar" 
                                     className='w-20 h-10 rounded-full shadow-md'
                                 />

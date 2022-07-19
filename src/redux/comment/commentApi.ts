@@ -2,7 +2,8 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {ICommentQueryResponse} from './types'
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'http://localhost:7777/',
+    // baseUrl: 'http://localhost:7777/',
+    baseUrl: process.env.REACT_APP_API_URL,
     prepareHeaders: (headers, { getState }) => {
       const token = window.localStorage.getItem('token')
 

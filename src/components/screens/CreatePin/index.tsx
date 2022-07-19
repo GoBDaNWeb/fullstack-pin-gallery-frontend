@@ -69,7 +69,7 @@ export const CreatePin = () => {
                     <div className='relative w-full h-full'>
                         {
                             imageUrl 
-                            ? <img className='max-w-[320px] max-h-[400px] shadow-md rounded-2xl' src={`http://localhost:7777${imageUrl}`}/>
+                            ? <img className='max-w-[320px] max-h-[400px] shadow-md rounded-2xl' src={`${process.env.REACT_APP_API_URL}${imageUrl}`}/>
                             : (
                                 <div 
                                     onClick={() => inputFileRef.current?.click()}

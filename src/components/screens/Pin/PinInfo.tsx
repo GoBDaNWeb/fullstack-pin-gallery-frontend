@@ -23,7 +23,7 @@ const UserAvatar = ({avatarUrl, firstName}: {avatarUrl: string | undefined, firs
             {
                 avatarUrl
                 ? <img 
-                    src={`http://localhost:7777${avatarUrl}`} 
+                    src={`${process.env.REACT_APP_API_URL}${avatarUrl}`} 
                     alt="avatar" 
                     className='w-10 h-10 bg-sky-500 rounded-full shadow-md'
                 />
@@ -150,7 +150,7 @@ const PinInfo = () => {
                 ? (<div className='w-[410px] h-[600px]'>
                         <Skeleton/>
                     </div>)
-                : <img src={`http://localhost:7777${pin?.imageUrl}`} alt="" className='max-w-[480px] rounded-lg shadow-md'/>
+                : <img src={`${process.env.REACT_APP_API_URL}${pin?.imageUrl}`} alt="" className='max-w-[480px] rounded-lg shadow-md'/>
             }
             <div className='bg-white w-full p-4 rounded-xl shadow-md flex flex-col items-start justify-start gap-3'>
                 <div className='flex flex-col justify-center relative w-full'>
@@ -173,7 +173,7 @@ const PinInfo = () => {
                         {
                             pin?.author.avatarUrl
                             ? <img 
-                                src={`http://localhost:7777${pin?.author.avatarUrl}`} 
+                                src={`${process.env.REACT_APP_API_URL}${pin?.author.avatarUrl}`} 
                                 alt="avatar" 
                                 className='w-10 h-10 bg-sky-500 rounded-full shadow-md'
                             />

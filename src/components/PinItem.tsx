@@ -107,7 +107,7 @@ const UserData = ({author}: {author: IAuthor}) => {
                 author?.avatarUrl
                 ? ( <img 
                         className='w-12 h-12 rounded-full' 
-                        src={`http://localhost:7777${author?.avatarUrl}`} 
+                        src={`${process.env.REACT_APP_API_URL}${author?.avatarUrl}`} 
                         alt="avatar" 
                     />
                 ) : (
@@ -137,7 +137,7 @@ const PinItem: React.FC<IPinItemProps> = ({_id, author, description, imageUrl, t
         <Link to={`/pin/${_id}`}>
             <div className='max-w-[350px] group relative overflow-hidden cursor-pointer transition-all duration-500 shadow-md my-2 mx-1 rounded-lg '>
                 <div className='bg-black bg-opacity-0 group-hover:bg-opacity-25 absolute top-0 bottom-0 right-0 left-0 transition-all duration-500'></div>
-                <img src={`http://localhost:7777${imageUrl}`}/>
+                <img src={`${process.env.REACT_APP_API_URL}${imageUrl}`}/>
                 <div onClick={navigateToProfile} >
                     <UserData author={author}/>
                 </div>

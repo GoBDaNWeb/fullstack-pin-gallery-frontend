@@ -106,7 +106,7 @@ const Register = ({changeAuthHandle}: any) => {
                     ? <img 
                         onClick={() => inputFileRef.current?.click()} 
                         className='w-20 h-20 rounded-full cursor-pointer'
-                        src={`http://localhost:7777${avatarUrl}`}
+                        src={`${process.env.REACT_APP_API_URL}${avatarUrl}`}
                         />
                     : (
                         <div 

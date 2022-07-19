@@ -68,7 +68,7 @@ const UserAvatar = () => {
                             ? (
                                 <div className='relative flex items-center justify-center group rounded-full'>
                                     <img 
-                                        src={`http://localhost:7777${user?.avatarUrl}`} 
+                                        src={`${process.env.REACT_APP_API_URL}${user?.avatarUrl}`} 
                                         alt="avatar" 
                                         className='w-20 h-20 bg-sky-500 rounded-full shadow-md cursor-pointer'
                                     />
@@ -110,7 +110,7 @@ const UserAvatar = () => {
                         {
                             user?.avatarUrl
                             ? <img 
-                                src={`http://localhost:7777${user?.avatarUrl}`} 
+                                src={`${process.env.REACT_APP_API_URL}${user?.avatarUrl}`} 
                                 alt="avatar" 
                                 className='w-20 h-20 bg-sky-500 rounded-full shadow-md'
                             />
