@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// * react 
+import {Routes, Route} from 'react-router-dom'
+import {useLocation} from 'react-router-dom'
+
+// * redux 
+import {useSelector} from 'react-redux'
+import {selectAuth} from './redux/user/selectors'
+import {useGetAuthMeQuery} from './redux/user/userApi'
+import {selectIsOpenModal} from './redux/user/selectors'
+
+// * components 
+import Header from './components/Header'
+import NonAuthModal from './components/NonAuthModal'
+import MainPage from './pages/Main'
+import PinPage from './pages/Pin'
+import UserProfilePage from './pages/UserProfile'
+import AuthPage from './pages/Auth'
+import CreatePinPage from './pages/CreatePin'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const location = useLocation()
+	const isAuth = useSelector(selectAuth)
+	const isOpenModal = useSelector(selectIsOpenModal)
+
+	useGetAuthMeQuery()
+
+	return (
+		<>
+			{
+				isAuth && location.pathname !== '/auth'
+				? <Header/> :
+				!isAuth && location.pathname !== '/auth'
+				? <Header/> :
+				(<></>)
+
+			}
+			{
+				isOpenModal
+				? <NonAuthModal/>
+				: (<></>)
+			}
+			<Routes>
+				<Route path='/' element={ <MainPage/>} />
+				<Route path='/pin/:id' element={ <PinPage/>} />
+				<Route path='/profile/:id' element={ <UserProfilePage/>} />
+				<Route path='/auth' element={ <AuthPage/>} />
+				<Route path='/create-pin' element={ <CreatePinPage/>} />
+			</Routes>
+		</>
+	);
 }
 
 export default App;
