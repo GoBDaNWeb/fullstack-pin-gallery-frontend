@@ -1,7 +1,6 @@
 // * react
 import React, {useEffect} from 'react'
 import Masonry from 'react-masonry-css'
-import {IPin} from '../../../types/data'
 
 // * redux 
 import {useSelector} from 'react-redux'
@@ -47,7 +46,7 @@ const Feed = () => {
                             ? [...Array(10)].map((_, index) => (
                                 <Skeleton key={index}/>
                             ))
-                            : allPins?.map((pin: IPin) => <PinItem key={pin._id} {...pin}/>)
+                            : allPins?.map((pin) => <PinItem key={pin._id} {...pin}/>)
                         }
                     </Masonry>
                 ) : (
@@ -60,7 +59,7 @@ const Feed = () => {
                             ? [...Array(10)].map((_, index) => (
                                 <Skeleton key={index}/>
                             ))
-                            : popularPins?.map((pin: IPin) => <PinItem key={pin._id} {...pin}/>)
+                            : popularPins?.map((pin) => <PinItem key={pin._id} {...pin}/>)
                         }
                     </Masonry>
                 )

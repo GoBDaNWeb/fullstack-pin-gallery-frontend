@@ -107,6 +107,7 @@ const Register = ({changeAuthHandle}: any) => {
                         onClick={() => inputFileRef.current?.click()} 
                         className='w-20 h-20 rounded-full cursor-pointer'
                         src={`${process.env.REACT_APP_API_URL}${avatarUrl}`}
+                        alt='Avatar'
                         />
                     : (
                         <div 

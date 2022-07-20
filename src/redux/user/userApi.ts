@@ -3,7 +3,6 @@ import {setUser} from './userSlice'
 import {IRegisterQuery, ILoginQuery, IAuthQueryResponse, ISavePinQuery, IRemovePinQuery, IUpdateAvatarQuery} from './types'
 
 const baseQuery = fetchBaseQuery({
-    // baseUrl: 'http://localhost:7777/',
     baseUrl: process.env.REACT_APP_API_URL,
     prepareHeaders: (headers, { getState }) => {
       const token = window.localStorage.getItem('token')
@@ -31,15 +30,15 @@ export const userApi = createApi({
     tagTypes: ['Auth'],
     endpoints: (builder) => ({
         getAuthMe: builder.query<IAuthQueryResponse, void>({
-            query: () => 'users/auth/me',
+            query: () => '/users/auth/me',
             providesTags: ['Auth']
         }),
         getUser: builder.query<IAuthQueryResponse, string | undefined>({
-            query: (id) => `users/user/${id}`,
+            query: (id) => `/users/user/${id}`,
         }),
         addRegisterUser: builder.mutation<IAuthQueryResponse, IRegisterQuery>({
             query: (params) => ({
-                url: 'users/auth/register',
+                url: '/users/auth/register',
                 method: 'POST',
                 body: params
             }),
@@ -47,7 +46,7 @@ export const userApi = createApi({
         }),
         addLoginUser: builder.mutation<IAuthQueryResponse, ILoginQuery>({
             query: (params) => ({
-                url: 'users/auth/login',
+                url: '/users/auth/login',
                 method: 'POST',
                 body: params
             }),
@@ -55,28 +54,28 @@ export const userApi = createApi({
         }),
         addUploadUser: builder.mutation<{url: string}, any>({
             query: (params) => ({
-                url: 'upload',
+                url: '/upload',
                 method: 'POST',
                 body: params
             }),
         }),
         updateUserSavePin: builder.mutation<void, ISavePinQuery>({
             query: (params) => ({
-                url: 'users/save-pin',
+                url: '/users/save-pin',
                 method: 'PATCH',
                 body: params
             })
         }),
         updateUserRemovePin: builder.mutation<void, IRemovePinQuery>({
             query: (params) => ({
-                url: 'users/remove-pin',
+                url: '/users/remove-pin',
                 method: 'PATCH',
                 body: params
             })
         }),
         updateUserAvatar: builder.mutation<void, IUpdateAvatarQuery>({
             query: (params) => ({
-                url: 'users/update-avatar',
+                url: '/users/update-avatar',
                 method: 'PATCH',
                 body: params
             })

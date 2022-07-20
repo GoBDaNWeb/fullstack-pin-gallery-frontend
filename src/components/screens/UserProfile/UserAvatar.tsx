@@ -113,6 +113,7 @@ const UserAvatar = () => {
                                 src={`${process.env.REACT_APP_API_URL}${user?.avatarUrl}`} 
                                 alt="avatar" 
                                 className='w-20 h-20 bg-sky-500 rounded-full shadow-md'
+                                alt='avatar'
                             />
                             : <div className='w-20 h-20 bg-sky-500 rounded-full shadow-md flex items-center justify-center text-white font-semibold text-3xl'>
                                 {user?.firstName[0].toUpperCase()}

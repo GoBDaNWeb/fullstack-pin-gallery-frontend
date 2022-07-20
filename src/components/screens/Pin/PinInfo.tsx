@@ -150,7 +150,11 @@ const PinInfo = () => {
                 ? (<div className='w-[410px] h-[600px]'>
                         <Skeleton/>
                     </div>)
-                : <img src={`${process.env.REACT_APP_API_URL}${pin?.imageUrl}`} alt="" className='max-w-[480px] rounded-lg shadow-md'/>
+                : <img 
+                    src={`${process.env.REACT_APP_API_URL}${pin?.imageUrl}`} 
+                    alt="Pin" 
+                    className='max-w-[480px] rounded-lg shadow-md'
+                />
             }
             <div className='bg-white w-full p-4 rounded-xl shadow-md flex flex-col items-start justify-start gap-3'>
                 <div className='flex flex-col justify-center relative w-full'>
