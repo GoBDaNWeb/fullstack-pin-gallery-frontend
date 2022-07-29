@@ -54,5 +54,6 @@ export interface IAuthQueryResponse {
 
 export interface IAuthState {
     data: IAuthQueryResponse | null,
-    isOpenModal: boolean
+    isOpenModal: boolean,
+    isOpenMobileMenu: boolean
 }

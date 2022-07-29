@@ -3,7 +3,8 @@ import {IAuthState, IAuthQueryResponse} from './types'
 
 const initialState: IAuthState = {
     data: null,
-    isOpenModal: false
+    isOpenModal: false,
+    isOpenMobileMenu: false
 }
 
 const userSlice = createSlice({
@@ -20,9 +21,12 @@ const userSlice = createSlice({
         handleOpenModal: (state: IAuthState, action: PayloadAction<boolean>) => {
             state.isOpenModal = action.payload
         },
+        handleOpenMobileMenu: (state: IAuthState) => {
+            state.isOpenMobileMenu = !state.isOpenMobileMenu
+        },
     },
 })
 
 export const userReducer = userSlice.reducer
 
-export const {setUser, logout, handleOpenModal} = userSlice.actions
+export const {setUser, logout, handleOpenModal, handleOpenMobileMenu} = userSlice.actions

@@ -90,7 +90,7 @@ const Comments = () => {
                             }
                         </div>
                     ) : (
-                        <div className='flex h-full items-center justify-center font-bold text-gray-300 text-4xl'>
+                        <div className='flex h-full items-center justify-center font-bold text-gray-300 text:2xl lg:text-4xl'>
                             Комментариев нет
                         </div>
                     )
@@ -144,7 +144,7 @@ const PinInfo = () => {
     }, [id])
 
     return (
-        <div className='flex gap-10'>
+        <div className='flex gap-10 flex-col lg:flex-row'>
             {
                 !pin
                 ? (<div className='w-[410px] h-[600px]'>

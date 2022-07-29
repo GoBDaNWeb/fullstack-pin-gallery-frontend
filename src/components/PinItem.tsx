@@ -45,8 +45,9 @@ const PinFunctional: React.FC<IPinItemProps> = ({_id, author, description, image
             fetchPined(currentUser._id)
             fetchCurrentUser()
             setIsPined(true)
+        } else {
+            dispatch(handleOpenModal(true))
         }
-        dispatch(handleOpenModal(true))
     }
 
     const removePin = (e: React.MouseEvent) => {
