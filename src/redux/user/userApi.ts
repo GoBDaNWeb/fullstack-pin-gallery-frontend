@@ -3,8 +3,7 @@ import {setUser} from './userSlice'
 import {IRegisterQuery, ILoginQuery, IAuthQueryResponse, ISavePinQuery, IRemovePinQuery, IUpdateAvatarQuery} from './types'
 
 const baseQuery = fetchBaseQuery({
-    // baseUrl: process.env.REACT_APP_API_URL,
-    baseUrl: 'http://localhost:7777',
+    baseUrl: process.env.REACT_APP_API_URL,
     prepareHeaders: (headers, { getState }) => {
       const token = window.localStorage.getItem('token')
 
