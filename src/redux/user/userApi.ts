@@ -27,11 +27,11 @@ const baseQueryWithAuth = async (args: any, api: any, extraOptions: any) => {
 export const userApi = createApi({
     reducerPath: 'api/user',
     baseQuery: baseQueryWithAuth,
-    tagTypes: ['Auth'],
+    tagTypes: ['Auth', 'Avatar'],
     endpoints: (builder) => ({
         getAuthMe: builder.query<IAuthQueryResponse, void>({
             query: () => '/users/auth/me',
-            providesTags: ['Auth']
+            providesTags: ['Auth', 'Avatar']
         }),
         getUser: builder.query<IAuthQueryResponse, string | undefined>({
             query: (id) => `/users/user/${id}`,
@@ -56,7 +56,7 @@ export const userApi = createApi({
             query: (params) => ({
                 url: '/upload',
                 method: 'POST',
-                body: params
+                body: params,
             }),
         }),
         updateUserSavePin: builder.mutation<void, ISavePinQuery>({
@@ -64,7 +64,8 @@ export const userApi = createApi({
                 url: '/users/save-pin',
                 method: 'PATCH',
                 body: params
-            })
+            }),
+            invalidatesTags: ['Avatar']
         }),
         updateUserRemovePin: builder.mutation<void, IRemovePinQuery>({
             query: (params) => ({
