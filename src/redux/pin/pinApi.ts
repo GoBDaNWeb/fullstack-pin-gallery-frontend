@@ -1,4 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
+import {setCurrentPin} from './pinSlice'
 import {IPinQueryResponse, ICreatePinQuery} from './types'
 
 const baseQuery = fetchBaseQuery({
@@ -14,9 +15,18 @@ const baseQuery = fetchBaseQuery({
     },
 })
 
+const baseQueryWithAuth = async (args: any, api: any, extraOptions: any) => {
+    let result: any = await baseQuery(args, api, extraOptions)
+    if (result.data && api.endpoint === 'getOnePin') {
+        api.dispatch(setCurrentPin(result?.data || null))
+    }
+
+    return result
+}
+
 export const pinApi = createApi({
     reducerPath: 'api/pin',
-    baseQuery,
+    baseQuery: baseQueryWithAuth,
     endpoints: (builder) => ({
         getPined: builder.query<IPinQueryResponse[], string | undefined>({
             query: (params) => `/post/saved-pins/${params}`,
@@ -65,6 +75,7 @@ export const {
     useGetPopularPinsQuery,
     useGetCreatedQuery,
     useGetOnePinQuery,
+    useLazyGetOnePinQuery,
     useAddPinMutation,
     useAddUploadPinMutation,
     useDeletePinMutation,

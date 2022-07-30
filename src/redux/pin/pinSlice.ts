@@ -1,9 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import { IPinState} from './types'
+import { IPinState, PinDataType} from './types'
 
 
 const initialState: IPinState = {
     items: [],
+    currentPin: null,
     isNewPins: true,
     isCreated: true
 }
@@ -12,6 +13,9 @@ const pinSlice = createSlice({
     name: 'pin',
     initialState,
     reducers: {
+        setCurrentPin: (state: IPinState, action: PayloadAction<PinDataType>) => {
+            state.currentPin = action.payload
+        },
         handleFetchPins: (state: IPinState, action: PayloadAction<boolean>) => {
             state.isNewPins = action.payload
         },
@@ -24,4 +28,4 @@ const pinSlice = createSlice({
 export const pinReducer = pinSlice.reducer
 
 
-export const {handleFetchPins, handleFetchPinsInProfile} = pinSlice.actions
+export const {setCurrentPin, handleFetchPins, handleFetchPinsInProfile} = pinSlice.actions

@@ -5,6 +5,7 @@ import React, {useState} from 'react'
 // * components
 import Feed from './Feed'
 import UserAvatar from './UserAvatar'
+import Button from '../../UI/Button'
 
 const UserProfile = () => {
     const [isCreated, setIsCreated] = useState<boolean>(true)
@@ -21,18 +22,16 @@ const UserProfile = () => {
             </div>
             <div className='px-10 pt-24'>
                 <div className='flex justify-center items-center gap-6 pb-8'>
-                    <button 
-                        onClick={() => setIsCreated(true)}
-                        className={`text-xl border-[1px] border-solid border-black px-6 pb-1 rounded-full hover:bg-black hover:text-white transition ${isCreated && 'bg-black text-white'}`}
-                    >
-                        созданные
-                    </button>
-                    <button 
-                        onClick={() => setIsCreated(false)}
-                        className={`text-xl border-[1px] border-solid border-black px-6 pb-1 rounded-full hover:bg-black hover:text-white transition ${!isCreated && 'bg-black text-white'}`}
-                    >
-                        сохраненные
-                    </button>
+                    <Button 
+                        content={'созданные'} 
+                        condition={isCreated} 
+                        func={() => setIsCreated(true)}
+                    />
+                    <Button 
+                        content={'сохраненные'} 
+                        condition={!isCreated} 
+                        func={() => setIsCreated(false)}
+                    />
                 </div>
                 <Feed 
                     isCreated={isCreated} 

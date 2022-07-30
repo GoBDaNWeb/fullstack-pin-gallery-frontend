@@ -9,6 +9,7 @@ import {selectPins} from '../../../redux/pin/selectors'
 
 // * components 
 import Feed from './Feed'
+import Button from '../../UI/Button'
 
 const Main = () => {
     const dispatch = useAppDispatch()
@@ -17,18 +18,16 @@ const Main = () => {
     return (
         <div className='bg-gray-50 min-h-screen px-10 pt-28'>
             <div className='flex items-center justify-center gap-4 pb-6'>
-                <button 
-                    onClick={() => dispatch(handleFetchPins(true))}
-                    className={`text-xl border-[1px] border-solid border-black px-6 pb-1 rounded-full hover:bg-black hover:text-white transition ${isNewPins && 'bg-black text-white'}`}
-                >
-                    Новые
-                </button>
-                <button 
-                    onClick={() => dispatch(handleFetchPins(false))}
-                    className={`text-xl border-[1px] border-solid border-black px-6 pb-1 rounded-full hover:bg-black hover:text-white transition ${!isNewPins && 'bg-black text-white'}`}
-                >
-                    Популярные
-                </button>
+                <Button 
+                    content={'Новые'} 
+                    condition={isNewPins} 
+                    func={() => dispatch(handleFetchPins(true))}
+                />
+                <Button 
+                    content={'Популярные'} 
+                    condition={!isNewPins} 
+                    func={() => dispatch(handleFetchPins(false))}
+                />
             </div>
             <Feed/>
         </div>

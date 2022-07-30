@@ -9,7 +9,7 @@ import {useGetAllPinsQuery, useGetPopularPinsQuery} from '../../../redux/pin/pin
 
 // * components 
 import Skeleton from './SkeletonFeed'
-import PinItem from '../../PinItem'
+import PinItem from '../../shared/PinItem'
 
 const breakpointColumnsObj = {
     default: 4,

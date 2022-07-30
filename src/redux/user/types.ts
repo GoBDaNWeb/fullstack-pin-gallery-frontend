@@ -47,7 +47,7 @@ export interface IAuthQueryResponse {
 	avatarUrl?: string,
 	createdAt: string,
 	updatedAt: string,
-	__v: number,
+	__v?: number,
 	pined: PinedType[],
 	token: string,
 }

@@ -2,8 +2,8 @@
 import React, { useState} from 'react'
 
 // * components
-import Login from './Login'
-import Register from './Register'
+import Login from './Login/index'
+import Register from './Register/index'
 
 const Auth = () => {
     const [isLogin, setIsLogin] = useState(true)
