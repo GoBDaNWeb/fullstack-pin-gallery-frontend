@@ -1,5 +1,4 @@
 import {configureStore} from '@reduxjs/toolkit'
-import { setupListeners } from '@reduxjs/toolkit/query'
 import {useDispatch} from 'react-redux'
 import {userReducer} from './user/userSlice'
 import {pinReducer} from './pin/pinSlice'

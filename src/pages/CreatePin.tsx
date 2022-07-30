@@ -1,4 +1,4 @@
-import CreatePin from '../components/screens/CreatePin'
+import CreatePin from '@components/screens/CreatePin'
 
 export const CreatePinPage = () => {
     return <CreatePin/>

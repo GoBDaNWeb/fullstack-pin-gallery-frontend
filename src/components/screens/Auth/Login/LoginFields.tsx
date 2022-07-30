@@ -2,12 +2,12 @@
 import React, {useState} from 'react'
 
 // * redux
-import {useAddLoginUserMutation} from '../../../../redux/user/userApi'
-import { useAppDispatch } from '../../../../redux/store';
-import { setUser} from '../../../../redux/user/userSlice';
+import {useAddLoginUserMutation} from '@redux/user/userApi'
+import { useAppDispatch } from '@redux/store';
+import { setUser} from '@redux/user/userSlice';
 
 // * components 
-import Input from '../../../UI/Input'
+import Input from '@components/UI/Input'
 
 const LoginFields = () => {
     const [email, setEmail] = useState<string>('')

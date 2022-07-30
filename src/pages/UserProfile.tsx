@@ -1,4 +1,4 @@
-import UserProfile from "../components/screens/UserProfile"
+import UserProfile from "@components/screens/UserProfile"
 
 const UserProfilePage = () => {
    

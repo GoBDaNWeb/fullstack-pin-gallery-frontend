@@ -3,7 +3,7 @@ import {Link, Navigate} from 'react-router-dom'
 
 // * redux
 import {useSelector} from 'react-redux'
-import {selectAuth} from '../../../../redux/user/selectors'
+import {selectAuth} from '@redux/user/selectors'
 
 // * icons
 import {TbArrowBackUp} from 'react-icons/tb'

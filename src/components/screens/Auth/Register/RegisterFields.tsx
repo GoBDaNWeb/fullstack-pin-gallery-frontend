@@ -3,16 +3,16 @@ import React, {useState, useRef} from 'react'
 
 // * redux
 import {useSelector} from 'react-redux'
-import {selectAuth} from '../../../../redux/user/selectors'
-import {useAddRegisterUserMutation, useAddUploadUserMutation} from '../../../../redux/user/userApi'
-import { useAppDispatch } from '../../../../redux/store';
-import { setUser} from '../../../../redux/user/userSlice';
+import {selectAuth} from '@redux/user/selectors'
+import {useAddRegisterUserMutation, useAddUploadUserMutation} from '@redux/user/userApi'
+import { useAppDispatch } from '@redux/store';
+import { setUser} from '@redux/user/userSlice';
 
 // * icons
 import {MdPhotoCamera} from 'react-icons/md'
 
 // * components 
-import Input from '../../../UI/Input'
+import Input from '@components/UI/Input'
 
 const RegisterFields = () => {
     const [avatarUrl, setAvatarUrl] = useState<string>('')

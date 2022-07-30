@@ -4,7 +4,7 @@ import {useLocation} from 'react-router-dom'
 
 // * redux 
 import {useSelector} from 'react-redux'
-import {selectAuth, selectIsOpenModal} from '../../redux/user/selectors'
+import {selectAuth, selectIsOpenModal} from '@redux/user/selectors'
 
 // * components 
 import Header from './Header'

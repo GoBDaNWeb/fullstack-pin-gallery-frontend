@@ -3,11 +3,11 @@ import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 
 // * redux
-import {useAddPinMutation} from '../../../redux/pin/pinApi'
+import {useAddPinMutation} from '@redux/pin/pinApi'
 
 // * components 
-import Button from '../../UI/Button'
-import Input from '../../UI/Input'
+import Button from '@components/UI/Button'
+import Input from '@components/UI/Input'
 
 const CreatePinFields = ({imageUrl}: {imageUrl: string}) => {
     const [title, setTitle] = useState<string>('')

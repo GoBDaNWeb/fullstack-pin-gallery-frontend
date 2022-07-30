@@ -1,11 +1,10 @@
 // * react 
-
 import React, {useState} from 'react'
 
 // * components
 import Feed from './Feed'
 import UserAvatar from './UserAvatar'
-import Button from '../../UI/Button'
+import Button from '@components/UI/Button'
 
 const UserProfile = () => {
     const [isCreated, setIsCreated] = useState<boolean>(true)

@@ -2,15 +2,15 @@
 import {Routes, Route} from 'react-router-dom'
 
 // * redux 
-import {useGetAuthMeQuery} from './redux/user/userApi'
+import {useGetAuthMeQuery} from '@redux/user/userApi'
 
 // * components 
-import Layout from './components/layout/Layout'
-import MainPage from './pages/Main'
-import PinPage from './pages/Pin'
-import UserProfilePage from './pages/UserProfile'
-import AuthPage from './pages/Auth'
-import CreatePinPage from './pages/CreatePin'
+import Layout from '@components/layout/Layout'
+import MainPage from '@pages/Main'
+import PinPage from '@pages/Pin'
+import UserProfilePage from '@pages/UserProfile'
+import AuthPage from '@pages/Auth'
+import CreatePinPage from '@pages/CreatePin'
 
 function App() {
 	useGetAuthMeQuery()

@@ -1,8 +1,5 @@
-// * react 
-import {useParams, useNavigate} from 'react-router-dom'
-
 // * redux 
-import {selectCurrentPin} from '../../../../redux/pin/selectors'
+import {selectCurrentPin} from '@redux/pin/selectors'
 import {useSelector} from 'react-redux'
 
 // * components 

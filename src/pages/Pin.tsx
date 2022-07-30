@@ -1,4 +1,4 @@
-import Pin from '../components/screens/Pin'
+import Pin from '@components/screens/Pin'
 
 const PinPage = () => {
     return <Pin/>

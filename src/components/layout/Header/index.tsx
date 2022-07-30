@@ -2,13 +2,13 @@
 import {Link} from 'react-router-dom'
 
 // * redux
-import {selectIsOpenMobileMenu} from '../../../redux/user/selectors'
-import {useAppDispatch} from '../../../redux/store'
+import {selectIsOpenMobileMenu} from '@redux/user/selectors'
+import {useAppDispatch} from '@redux/store'
 import {useSelector} from 'react-redux'
-import {handleOpenMobileMenu} from '../../../redux/user/userSlice'
+import {handleOpenMobileMenu} from '@redux/user/userSlice'
 
 // * icons/logo
-import logo from '../../../assets/logo.svg'
+import logo from '@assets/logo.svg'
 import {AiOutlineClose} from 'react-icons/ai'
 import {BiMenu} from 'react-icons/bi'
 

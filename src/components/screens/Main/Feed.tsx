@@ -4,12 +4,12 @@ import Masonry from 'react-masonry-css'
 
 // * redux 
 import {useSelector} from 'react-redux'
-import {selectPins} from '../../../redux/pin/selectors'
-import {useGetAllPinsQuery, useGetPopularPinsQuery} from '../../../redux/pin/pinApi'
+import {selectPins} from '@redux/pin/selectors'
+import {useGetAllPinsQuery, useGetPopularPinsQuery} from '@redux/pin/pinApi'
 
 // * components 
 import Skeleton from './Skeleton'
-import PinItem from '../../shared/PinItem'
+import PinItem from '@components/shared/PinItem'
 
 const breakpointColumnsObj = {
     default: 4,

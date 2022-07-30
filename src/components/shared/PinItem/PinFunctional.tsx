@@ -4,12 +4,12 @@ import {useLocation} from 'react-router-dom'
 import {IPinItemProps, IPinedLogicProps} from './types'
 
 // * redux
-import {useAppDispatch} from '../../../redux/store'
-import {useUpdateUserSavePinMutation, useUpdateUserRemovePinMutation, useLazyGetAuthMeQuery} from '../../../redux/user/userApi'
-import {useLazyGetPinedQuery} from '../../../redux/pin/pinApi'
 import {useSelector} from 'react-redux'
-import {selectAuthData} from '../../../redux/user/selectors'
-import {handleOpenModal} from '../../../redux/user/userSlice'
+import {useAppDispatch} from '@redux/store'
+import {useUpdateUserSavePinMutation, useUpdateUserRemovePinMutation, useLazyGetAuthMeQuery} from '@redux/user/userApi'
+import {useLazyGetPinedQuery} from '@redux/pin/pinApi'
+import {selectAuthData} from '@redux/user/selectors'
+import {handleOpenModal} from '@redux/user/userSlice'
 
 // * icons
 import {TbPin, TbPinnedOff} from 'react-icons/tb'

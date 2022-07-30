@@ -2,14 +2,14 @@
 import React from 'react'
 
 // * redux 
-import {useAppDispatch} from '../../../redux/store'
+import {useAppDispatch} from '@redux/store'
 import {useSelector} from 'react-redux'
-import {handleFetchPins} from '../../../redux/pin/pinSlice'
-import {selectPins} from '../../../redux/pin/selectors'
+import {handleFetchPins} from '@redux/pin/pinSlice'
+import {selectPins} from '@redux/pin/selectors'
 
 // * components 
 import Feed from './Feed'
-import Button from '../../UI/Button'
+import Button from '@components/UI/Button'
 
 const Main = () => {
     const dispatch = useAppDispatch()

@@ -2,7 +2,7 @@
 import {Link, Navigate} from 'react-router-dom'
 
 // * redux
-import {selectAuth} from '../../../../redux/user/selectors'
+import {selectAuth} from '@redux/user/selectors'
 import {useSelector} from 'react-redux'
 
 // * icons

@@ -3,13 +3,13 @@ import {useParams} from 'react-router-dom'
 
 // * redux
 import {useSelector} from 'react-redux'
-import {selectAuthData} from '../../../redux/user/selectors'
+import {selectAuthData} from '@redux/user/selectors'
 import {
     useUpdateUserAvatarMutation, 
     useGetUserQuery, 
     useLazyGetAuthMeQuery, 
     useAddUploadUserMutation
-} from '../../../redux/user/userApi'
+} from '@redux/user/userApi'
 
 // * icons
 import {MdPhotoCamera} from 'react-icons/md'

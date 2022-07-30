@@ -2,7 +2,7 @@
 import React, {useRef} from 'react'
 
 // * redux
-import {useAddUploadPinMutation} from '../../../redux/pin/pinApi'
+import {useAddUploadPinMutation} from '@redux/pin/pinApi'
 
 // * icons
 import {MdPhotoCamera} from 'react-icons/md'

@@ -1,5 +1,5 @@
 // * redux
-import {selectIsOpenMobileMenu} from '../../../redux/user/selectors'
+import {selectIsOpenMobileMenu} from '@redux/user/selectors'
 import {useSelector} from 'react-redux'
 
 // * components 

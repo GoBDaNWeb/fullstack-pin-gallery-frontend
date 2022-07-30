@@ -5,11 +5,11 @@ import Masonry from 'react-masonry-css'
 import {IProfileFeedProps} from './types'
 
 // * redux 
-import {useGetPinedQuery, useGetCreatedQuery} from '../../../redux/pin/pinApi'
+import {useGetPinedQuery, useGetCreatedQuery} from '@redux/pin/pinApi'
 
 // * components 
 import Skeleton from './Skeleton'
-import PinItem from '../../shared/PinItem'
+import PinItem from '@components/shared/PinItem'
 
 const breakpointColumnsObj = {
     default: 4,

@@ -3,10 +3,10 @@ import React, {useEffect} from 'react'
 import {useParams, useNavigate, Link} from 'react-router-dom'
 
 // * redux 
-import {useLazyGetOnePinQuery, useDeletePinMutation} from '../../../../redux/pin/pinApi'
 import {useSelector} from 'react-redux'
-import {selectAuthData} from '../../../../redux/user/selectors'
-import {selectCurrentPin} from '../../../../redux/pin/selectors'
+import {useLazyGetOnePinQuery, useDeletePinMutation} from '@redux/pin/pinApi'
+import {selectAuthData} from '@redux/user/selectors'
+import {selectCurrentPin} from '@redux/pin/selectors'
 
 // * icons 
 import {BsEyeFill} from 'react-icons/bs'

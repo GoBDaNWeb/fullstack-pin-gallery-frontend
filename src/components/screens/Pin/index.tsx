@@ -1,18 +1,17 @@
 // * react 
 import {useParams} from 'react-router-dom'
 
-
 // * redux 
-import {useGetOnePinQuery} from '../../../redux/pin/pinApi'
 import {useSelector} from 'react-redux'
-import {useAppDispatch} from '../../../redux/store'
-import {handleFetchPins} from '../../../redux/pin/pinSlice'
-import {selectPins} from '../../../redux/pin/selectors'
+import {useGetOnePinQuery} from '@redux/pin/pinApi'
+import {useAppDispatch} from '@redux/store'
+import {handleFetchPins} from '@redux/pin/pinSlice'
+import {selectPins} from '@redux/pin/selectors'
 
 // *components
 import Feed from './Feed'
 import PinInfo from './PinInfo'
-import Button from '../../UI/Button'
+import Button from '@components/UI/Button'
 
 const Pin = () => {
     const {id} = useParams()

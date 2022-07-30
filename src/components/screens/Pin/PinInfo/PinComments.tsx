@@ -3,9 +3,9 @@ import React, {useState} from 'react'
 import {useParams} from 'react-router-dom'
 
 // * redux 
-import {useGetCommentsQuery, useAddCommentMutation} from '../../../../redux/comment/commentApi'
 import {useSelector} from 'react-redux'
-import {selectAuthData} from '../../../../redux/user/selectors'
+import {useGetCommentsQuery, useAddCommentMutation} from '@redux/comment/commentApi'
+import {selectAuthData} from '@redux/user/selectors'
 
 // * components 
 import UserAvatar from './UserAvatar'

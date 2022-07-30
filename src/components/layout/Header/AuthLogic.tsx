@@ -2,10 +2,10 @@
 import {Link} from 'react-router-dom'
 
 // * redux
-import {selectAuth, selectAuthData} from '../../../redux/user/selectors'
-import {useAppDispatch} from '../../../redux/store'
 import {useSelector} from 'react-redux'
-import {logout} from '../../../redux/user/userSlice'
+import {selectAuth, selectAuthData} from '@redux/user/selectors'
+import {useAppDispatch} from '@redux/store'
+import {logout} from '@redux/user/userSlice'
 
 // * icons/logo
 import {BiImageAdd} from 'react-icons/bi'
