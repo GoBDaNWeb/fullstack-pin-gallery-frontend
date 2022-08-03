@@ -1,4 +1,7 @@
-const Button = ({content, condition, func}: {content: string, condition: boolean | void, func: any}) => {
+// * react 
+import {memo} from 'react'
+
+const Button = memo(({content, condition, func}: {content: string, condition: boolean | void, func: any}) => {
     return (
         <button 
             onClick={func}
@@ -7,6 +10,6 @@ const Button = ({content, condition, func}: {content: string, condition: boolean
             {content}
         </button>
     )
-}
+})
 
 export default Button

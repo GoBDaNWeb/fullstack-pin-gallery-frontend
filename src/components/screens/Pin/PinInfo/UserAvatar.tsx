@@ -1,4 +1,4 @@
-const UserAvatar = ({avatarUrl, firstName}: {avatarUrl: string | undefined, firstName: string}) => {
+const UserAvatar = ({avatarUrl, firstName}: {avatarUrl?: string | undefined, firstName?: string}) => {
     return (
         <>
             {
@@ -10,7 +10,7 @@ const UserAvatar = ({avatarUrl, firstName}: {avatarUrl: string | undefined, firs
                 />
                 : (
                     <div className='w-10 h-10 bg-sky-500 rounded-full shadow-md flex items-center justify-center text-white font-semibold text-3xl'>
-                        {firstName[0].toUpperCase()}
+                        {firstName && firstName[0].toUpperCase()}
                     </div>
                 )
             }

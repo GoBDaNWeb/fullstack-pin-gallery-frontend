@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect, useRef, memo} from 'react'
 import {useParams} from 'react-router-dom'
 
 // * redux
@@ -15,7 +15,7 @@ import {
 import {MdPhotoCamera} from 'react-icons/md'
 
 
-const UserAvatar = () => {
+const UserAvatar = memo(() => {
     const [avatarUrl, setAvatarUrl] = useState<string>()
 
     const inputFileRef = useRef<HTMLInputElement>(null)
@@ -124,6 +124,6 @@ const UserAvatar = () => {
             }
         </>
     )
-}
+})
 
 export default UserAvatar

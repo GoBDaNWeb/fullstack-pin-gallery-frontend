@@ -1,4 +1,5 @@
 // * react 
+import {memo} from 'react'
 import {Link} from 'react-router-dom'
 
 // * redux
@@ -11,7 +12,7 @@ import {logout} from '@redux/user/userSlice'
 import {BiImageAdd} from 'react-icons/bi'
 
 
-const AuthLogic = () => {
+const AuthLogic = memo(() => {
     const isAuth = useSelector(selectAuth)
     const currentUser = useSelector(selectAuthData)
 
@@ -57,6 +58,6 @@ const AuthLogic = () => {
             }
         </>
     )
-}
+})
 
 export default AuthLogic

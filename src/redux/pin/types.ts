@@ -48,7 +48,6 @@ export type PinDataType = {
 }
 
 export interface IPinState {
-    items: PinDataType[],
     currentPin: PinDataType | null,
     isNewPins: boolean,
     isCreated: boolean
