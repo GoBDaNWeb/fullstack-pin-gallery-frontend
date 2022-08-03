@@ -1,3 +1,5 @@
+import {memo} from 'react'
+
 // * redux 
 import {selectCurrentPin} from '@redux/pin/selectors'
 import {useSelector} from 'react-redux'
@@ -5,9 +7,9 @@ import {useSelector} from 'react-redux'
 // * components 
 import PinImg from './PinImg'
 import PinContent from './PinContent'
-import PinComments from './PinComments'
+import PinComments from './PinComments/index'
 
-const PinInfo = () => {
+const PinInfo = memo(() => {
     const pin = useSelector(selectCurrentPin)
 
     return (
@@ -19,6 +21,6 @@ const PinInfo = () => {
             </div>
         </div>
     )
-}
+})
 
 export default PinInfo

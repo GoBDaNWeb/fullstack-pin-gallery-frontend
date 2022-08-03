@@ -1,5 +1,5 @@
 // * react
-import React from 'react'
+import React, {memo} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import {IPinItemProps} from './types'
 
@@ -11,7 +11,7 @@ import UserData from './UserData'
 import PinFunctional from './PinFunctional'
 
 
-const PinItem: React.FC<IPinItemProps> = ({_id, author, description, imageUrl, title, viewsCount}) => {
+const PinItem: React.FC<IPinItemProps> = memo(({_id, author, description, imageUrl, title, viewsCount}) => {
     const pinParams = {_id, author, description, imageUrl, title, viewsCount}
     const navigation = useNavigate()
     
@@ -37,6 +37,6 @@ const PinItem: React.FC<IPinItemProps> = ({_id, author, description, imageUrl, t
             </div>
         </Link>
     )
-}
+})
 
 export default PinItem

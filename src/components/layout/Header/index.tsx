@@ -1,4 +1,5 @@
 // * react 
+import {memo} from 'react'
 import {Link} from 'react-router-dom'
 
 // * redux
@@ -16,7 +17,7 @@ import {BiMenu} from 'react-icons/bi'
 import AuthLogic from './AuthLogic'
 import MobileMenu from './MobileMenu'
 
-const Header = () => {
+const Header = memo(() => {
     const isOpenMenu = useSelector(selectIsOpenMobileMenu)
     const dispatch = useAppDispatch()
 
@@ -43,6 +44,6 @@ const Header = () => {
             <MobileMenu/>
         </>
     )
-}
+})
 
 export default Header

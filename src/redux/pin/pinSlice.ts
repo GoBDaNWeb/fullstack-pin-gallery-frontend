@@ -3,7 +3,6 @@ import { IPinState, PinDataType} from './types'
 
 
 const initialState: IPinState = {
-    items: [],
     currentPin: null,
     isNewPins: true,
     isCreated: true

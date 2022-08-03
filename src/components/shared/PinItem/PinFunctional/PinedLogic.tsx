@@ -1,7 +1,7 @@
 // * react
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, memo, useCallback} from 'react'
 import {useLocation} from 'react-router-dom'
-import {IPinItemProps, IPinedLogicProps} from './types'
+import {IPinItemProps, IPinedLogicProps} from '../types'
 
 // * redux
 import {useSelector} from 'react-redux'
@@ -14,7 +14,7 @@ import {handleOpenModal} from '@redux/user/userSlice'
 // * icons
 import {TbPin, TbPinnedOff} from 'react-icons/tb'
 
-const PinedLogic: React.FC<IPinedLogicProps> = ({currentUser, _id, author, description, imageUrl, title, viewsCount}) => {
+const PinedLogic: React.FC<IPinedLogicProps> = memo(({currentUser, _id, author, description, imageUrl, title, viewsCount}) => {
     const [isPined, setIsPined] = useState<boolean>(false)
 
     const dispatch = useAppDispatch()
@@ -25,7 +25,7 @@ const PinedLogic: React.FC<IPinedLogicProps> = ({currentUser, _id, author, descr
     const [userRemovePin] = useUpdateUserRemovePinMutation()
     
     const location = useLocation()
-    const savePin = (e: React.MouseEvent) => {
+    const savePin = useCallback((e: React.MouseEvent) => {
         e.preventDefault()
         if (currentUser) {
             const savedPin = {
@@ -44,9 +44,9 @@ const PinedLogic: React.FC<IPinedLogicProps> = ({currentUser, _id, author, descr
         } else {
             dispatch(handleOpenModal(true))
         }
-    }
+    }, [isPined])
 
-    const removePin = (e: React.MouseEvent) => {
+    const removePin = useCallback((e: React.MouseEvent) => {
         e.preventDefault()
         if (currentUser) {
             const removedPin = {
@@ -58,7 +58,7 @@ const PinedLogic: React.FC<IPinedLogicProps> = ({currentUser, _id, author, descr
             fetchCurrentUser()
             setIsPined(false)
         }
-    }
+    }, [isPined])
 
     useEffect(() => {
         const filtered = currentUser?.pined?.filter((pin) => pin._id === _id)
@@ -87,28 +87,6 @@ const PinedLogic: React.FC<IPinedLogicProps> = ({currentUser, _id, author, descr
             }
         </>
     )
-}
+})
 
-const PinFunctional: React.FC<IPinItemProps> = ({_id, author, description, imageUrl, title, viewsCount}) => {
-    const currentUser = useSelector(selectAuthData)
-    return (
-        <>
-            {
-                currentUser?._id !== author._id 
-                && (
-                    <PinedLogic 
-                        currentUser={currentUser}
-                        _id={_id}
-                        author={author}
-                        description={description}
-                        imageUrl={imageUrl}
-                        title={title}
-                        viewsCount={viewsCount}
-                    />
-                ) 
-            }
-        </>
-    )
-}
-
-export default PinFunctional
+export default PinedLogic

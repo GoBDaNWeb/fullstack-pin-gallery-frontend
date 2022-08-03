@@ -33,3 +33,23 @@ export interface IAuth {
 	pined: IPin[],
 	token: string,
 }
+
+export interface IPin {
+    _id: string,
+    author: IAuthor,
+    description?: string,
+    imageUrl: string,
+    title: string,
+    viewsCount: number,
+    createdAt?: string,
+    updatedAt?: string,
+}
+
+export interface IComment {
+    _id: string,
+    text: string,
+    author: IAuthor,
+    postId: string,
+    createdAt: string,
+    updatedAt: string
+}
