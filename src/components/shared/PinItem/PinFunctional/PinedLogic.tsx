@@ -1,14 +1,12 @@
 // * react
 import React, {useEffect, useState, memo, useCallback} from 'react'
 import {useLocation} from 'react-router-dom'
-import {IPinItemProps, IPinedLogicProps} from '../types'
+import {IPinedLogicProps} from '../types'
 
 // * redux
-import {useSelector} from 'react-redux'
 import {useAppDispatch} from '@redux/store'
-import {useUpdateUserSavePinMutation, useUpdateUserRemovePinMutation, useLazyGetAuthMeQuery} from '@redux/user/userApi'
-import {useLazyGetPinedQuery} from '@redux/pin/pinApi'
-import {selectAuthData} from '@redux/user/selectors'
+import {useUpdateUserSavePinMutation, useUpdateUserRemovePinMutation, useLazyGetAuthMeQuery} from '@services/user/userApi'
+import {useLazyGetPinedQuery} from '@services/pin/pinApi'
 import {handleOpenModal} from '@redux/user/userSlice'
 
 // * icons

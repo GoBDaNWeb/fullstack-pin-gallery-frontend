@@ -1,22 +1,22 @@
 // * react
-import React, {useState} from 'react'
+import React, {memo, useState, useCallback} from 'react'
 
 // * redux
-import {useAddLoginUserMutation} from '@redux/user/userApi'
+import {useAddLoginUserMutation} from '@services/user/userApi'
 import { useAppDispatch } from '@redux/store';
 import { setUser} from '@redux/user/userSlice';
 
 // * components 
 import Input from '@components/UI/Input'
 
-const LoginFields = () => {
+const LoginFields = memo(() => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
-    const dispatch = useAppDispatch()
 
+    const dispatch = useAppDispatch()
     const [userLogin] = useAddLoginUserMutation()
 
-    const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const handleChangeValue = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
         const {value} = e.target
         const {name} = e.target
         if (name === 'email') {
@@ -25,7 +25,7 @@ const LoginFields = () => {
         if (name === 'password') {
             setPassword(value)
         }
-    }
+    }, [])
 
     const handleLogin = async() => {
         try {
@@ -69,6 +69,6 @@ const LoginFields = () => {
             </button>
         </div>
     )
-}
+})
 
 export default LoginFields

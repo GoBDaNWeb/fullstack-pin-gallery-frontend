@@ -1,14 +1,14 @@
 // * react
-import React, {useEffect} from 'react'
+import {useEffect, useState} from 'react'
+import {useParams} from 'react-router-dom'
 import Masonry from 'react-masonry-css'
 
 // * redux 
-import {useSelector} from 'react-redux'
-import {selectPins} from '@redux/pin/selectors'
-import {useGetAllPinsQuery, useGetPopularPinsQuery} from '@redux/pin/pinApi'
+import {useGetPinedQuery, useGetCreatedQuery} from '@services/pin/pinApi'
 
 // * components 
-import Skeleton from './SkeletonFeed'
+import Buttons from './Buttons'
+import Skeleton from './Skeleton'
 import PinItem from '@components/shared/PinItem'
 
 const breakpointColumnsObj = {
@@ -20,46 +20,52 @@ const breakpointColumnsObj = {
     500: 1,
 };
 
-const Feed = () => {
-    const {isNewPins} = useSelector(selectPins)
+const ProfileFeed = () => {
+    const [isCreated, setIsCreated] = useState<boolean>(true)
 
-    const {data: allPins, refetch: refetchAllPins, isLoading: isLoadingAll} = useGetAllPinsQuery()
-    const {data: popularPins, refetch: refetchPopularPins, isLoading: isLoadingPopular} = useGetPopularPinsQuery()
+    const {id} = useParams()
+
+    const {data: pinedItems, isLoading: isLoadingPined, refetch: refetchPined} = useGetPinedQuery(id)
+    const {data: createdItems, isLoading: isLoadingCreated, refetch: refetchCreated} = useGetCreatedQuery(id)
 
     useEffect(() => {
-        isNewPins 
-        ? refetchAllPins()
-        : refetchPopularPins()
-    }, [isNewPins])
+        isCreated 
+        ? refetchCreated()
+        : refetchPined()
+    }, [isCreated])
 
     return (
         <>
+            <Buttons
+                isCreated={isCreated}
+                setIsCreated={setIsCreated}
+            />
             {
-                isNewPins 
+                isCreated 
                 ? (
                     <Masonry
                         breakpointCols={breakpointColumnsObj}
                         className="flex animate-slide-fwd"
                     >
                         {
-                            isLoadingAll
+                            isLoadingPined
                             ? [...Array(10)].map((_, index) => (
                                 <Skeleton key={index}/>
                             ))
-                            : allPins?.map((pin) => <PinItem key={pin._id} {...pin}/>)
+                            : createdItems?.map((pin) => <PinItem key={pin._id} {...pin}/>)
                         }
                     </Masonry>
                 ) : (
                     <Masonry
                         breakpointCols={breakpointColumnsObj}
                         className="flex animate-slide-fwd"
-                    >  
+                    >
                         {
-                            isLoadingPopular
+                            isLoadingCreated
                             ? [...Array(10)].map((_, index) => (
                                 <Skeleton key={index}/>
                             ))
-                            : popularPins?.map((pin) => <PinItem key={pin._id} {...pin}/>)
+                            : pinedItems?.map((pin) => <PinItem key={pin._id} {...pin}/>)
                         }
                     </Masonry>
                 )
@@ -68,4 +74,4 @@ const Feed = () => {
     )
 }
 
-export default Feed
+export default ProfileFeed

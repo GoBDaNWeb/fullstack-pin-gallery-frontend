@@ -1,10 +1,10 @@
 // * react 
-import React, {useEffect} from 'react'
+import {useEffect} from 'react'
 import {useParams, useNavigate, Link} from 'react-router-dom'
 
 // * redux 
 import {useSelector} from 'react-redux'
-import {useLazyGetOnePinQuery, useDeletePinMutation} from '@redux/pin/pinApi'
+import {useLazyGetOnePinQuery, useDeletePinMutation} from '@services/pin/pinApi'
 import {selectAuthData} from '@redux/user/selectors'
 import {selectCurrentPin} from '@redux/pin/selectors'
 
@@ -14,7 +14,7 @@ import {AiFillDelete} from 'react-icons/ai'
 
 
 // * components 
-import UserAvatar from './UserAvatar'
+import UserAvatar from '@components/shared/UserAvatar'
 
 const PinContent = () => {
     const {id} = useParams()
@@ -38,7 +38,7 @@ const PinContent = () => {
         fetchPin(id)
         window.scrollTo(0, 0)
     }, [id])
-
+    
     return (
         <div className='flex flex-col justify-center relative w-full'>
             <ul className='text-gray-400'>

@@ -1,20 +1,29 @@
 // * components 
-import Skeleton from '../SkeletonPin'
-import {IPin} from '../types'
+import Skeleton from './SkeletonPin'
 
-const PinImg = ({pin}: {pin: IPin | null}) => {
+// * redux 
+import {selectCurrentPin} from '@redux/pin/selectors'
+import {useSelector} from 'react-redux'
+
+const PinImg = () => {
+    const pin = useSelector(selectCurrentPin)
+
     return (
         <>
             {
-                !pin
-                ? (<div className='w-[410px] h-[600px]'>
+                pin
+                ? (
+                    <img 
+                        src={`${process.env.REACT_APP_API_URL}${pin?.imageUrl}`} 
+                        alt="Pin" 
+                        className='max-w-[480px] rounded-lg shadow-md'
+                    />
+                ) 
+                : (
+                    <div className='w-[410px] h-[600px]'>
                         <Skeleton/>
-                    </div>)
-                : <img 
-                    src={`${process.env.REACT_APP_API_URL}${pin?.imageUrl}`} 
-                    alt="Pin" 
-                    className='max-w-[480px] rounded-lg shadow-md'
-                />
+                    </div>
+                )
             }
         </>
     )

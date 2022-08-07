@@ -2,9 +2,9 @@ import {configureStore} from '@reduxjs/toolkit'
 import {useDispatch} from 'react-redux'
 import {userReducer} from './user/userSlice'
 import {pinReducer} from './pin/pinSlice'
-import {userApi} from './user/userApi'
-import {pinApi} from './pin/pinApi'
-import {commentApi} from './comment/commentApi'
+import {userApi} from '@services/user/userApi'
+import {pinApi} from '@services/pin/pinApi'
+import {commentApi} from '@services/comment/commentApi'
 
 export const store = configureStore({
     reducer: {

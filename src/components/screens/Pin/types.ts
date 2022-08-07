@@ -53,3 +53,6 @@ export interface IComment {
     createdAt: string,
     updatedAt: string
 }
+export interface ICommentProps {
+    comment: IComment
+}

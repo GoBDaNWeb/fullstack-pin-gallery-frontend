@@ -20,3 +20,11 @@ export interface IAuthor {
     updatedAt?: string,
     token?: string
 }
+
+export interface IRegisterProps {
+    changeAuthHandle: () => void
+}
+
+export interface ILoginProps {
+    changeAuthHandle: () => void
+}

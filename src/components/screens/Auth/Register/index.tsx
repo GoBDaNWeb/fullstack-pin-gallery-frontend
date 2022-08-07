@@ -1,5 +1,7 @@
 // * react
+import {memo} from 'react'
 import {Link, Navigate} from 'react-router-dom'
+import {IRegisterProps} from '../types'
 
 // * redux
 import {useSelector} from 'react-redux'
@@ -11,13 +13,12 @@ import {TbArrowBackUp} from 'react-icons/tb'
 // * components 
 import RegisterFields from './RegisterFields'
 
-const Register = ({changeAuthHandle}: {changeAuthHandle: () => void}) => {
+const Register: React.FC<IRegisterProps> = memo(({changeAuthHandle}) => {
     const isAuth = useSelector(selectAuth)
 
     if (isAuth) {
 		return <Navigate to='/'/>
 	}
-
 
     return (
         <div className='p-4 bg-white rounded-xl shadow-md w-96 relative'>
@@ -39,6 +40,6 @@ const Register = ({changeAuthHandle}: {changeAuthHandle: () => void}) => {
             </h6>
         </div>
     )
-}
+})
 
 export default Register
