@@ -2,7 +2,7 @@
 import {Routes, Route} from 'react-router-dom'
 
 // * redux 
-import {useGetAuthMeQuery} from '@redux/user/userApi'
+import {useGetAuthMeQuery} from '@services/user/userApi'
 
 // * components 
 import Layout from '@components/layout/Layout'

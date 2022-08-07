@@ -1,5 +1,18 @@
-// * react
-import React from 'react'
+export interface IPinQueryResponse {
+    title: string,
+    imageUrl: string,
+    description?: string,
+    author: IAuthor,
+    viewsCount: number,
+    _id: string,
+    createdAt?: string,
+    updatedAt?: string,
+}
+export interface ICreatePinQuery {
+    title: string,
+    pinImage: string,
+    description?: string,
+}
 
 export interface IPin {
     _id: string,
@@ -22,13 +35,4 @@ export interface IAuthor {
     createdAt?: string,
     updatedAt?: string,
     token?: string
-}
-
-export interface ICreatePinImgProps {
-    pinImage: string, 
-    handleUploadImage: (e: React.ChangeEvent<HTMLInputElement> ) => Promise<void>, 
-    clearImageUrl: () => void
-}
-export interface ICreatePinFieldsProps {
-    pinImage: string
 }

@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import {setUser} from './userSlice'
+import {setUser} from '@redux/user/userSlice'
 import {IRegisterQuery, ILoginQuery, IAuthQueryResponse, ISavePinQuery, IRemovePinQuery, IUpdateAvatarQuery} from './types'
 
 const baseQuery = fetchBaseQuery({

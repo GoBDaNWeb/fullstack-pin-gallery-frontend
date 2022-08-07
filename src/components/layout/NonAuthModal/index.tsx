@@ -10,18 +10,22 @@ import {handleOpenModal} from '@redux/user/userSlice'
 import {AiOutlineClose} from 'react-icons/ai'
 
 const NonAuthModal = () => {
-
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
-    const closeModal = (e: React.MouseEvent) => {
-        e.preventDefault()
+    const closeModal = (): void => {
         dispatch(handleOpenModal(false))
     }
 
     return (
-        <div className='fixed top-0 bottom-0 left-0 right-0 bg-black bg-opacity-50 z-50 flex items-center justify-center'>
-            <div className='w-96 h-96 bg-white rounded-2xl relative p-2 '>
+        <div 
+            onClick={closeModal}
+            className='fixed top-0 bottom-0 left-0 right-0 bg-black bg-opacity-50 z-50 flex items-center justify-center'
+        >
+            <div 
+                onClick={e => e.stopPropagation()}
+                className='w-96 h-96 bg-white rounded-2xl relative p-2 '
+            >
                 <div 
                     onClick={closeModal}
                     className='absolute right-2 text-2xl cursor-pointer'
@@ -34,7 +38,7 @@ const NonAuthModal = () => {
                     <div 
                         onClick={(e) => {
                             navigate('/auth')
-                            closeModal(e)
+                            closeModal()
                         }} 
                         className='text-sky-500 cursor-pointer'
                     >

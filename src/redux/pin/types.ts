@@ -1,19 +1,3 @@
-export interface IPinQueryResponse {
-    title: string,
-    imageUrl: string,
-    description?: string,
-    author: IAuthor,
-    viewsCount: number,
-    _id: string,
-    createdAt?: string,
-    updatedAt?: string,
-}
-export interface ICreatePinQuery {
-    title: string,
-    imageUrl: string,
-    description?: string,
-}
-
 export interface IPin {
     _id: string,
     author: IAuthor,

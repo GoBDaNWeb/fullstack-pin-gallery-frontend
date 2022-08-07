@@ -1,13 +1,14 @@
 // * react
-import React, {useEffect} from 'react'
+import {useEffect} from 'react'
 import Masonry from 'react-masonry-css'
 
 // * redux 
 import {useSelector} from 'react-redux'
 import {selectPins} from '@redux/pin/selectors'
-import {useGetAllPinsQuery, useGetPopularPinsQuery} from '@redux/pin/pinApi'
+import {useGetAllPinsQuery, useGetPopularPinsQuery} from '@services/pin/pinApi'
 
 // * components 
+import Buttons from './Buttons'
 import Skeleton from './Skeleton'
 import PinItem from '@components/shared/PinItem'
 
@@ -20,8 +21,9 @@ const breakpointColumnsObj = {
     500: 1,
 };
 
-const Feed = () => {
+const DefaultFeed = () => {
     const {isNewPins} = useSelector(selectPins)
+
 
     const {data: allPins, refetch: refetchAllPins, isLoading: isLoadingAll} = useGetAllPinsQuery()
     const {data: popularPins, refetch: refetchPopularPins, isLoading: isLoadingPopular} = useGetPopularPinsQuery()
@@ -34,6 +36,7 @@ const Feed = () => {
 
     return (
         <>
+            <Buttons/>
             {
                 isNewPins 
                 ? (
@@ -46,7 +49,7 @@ const Feed = () => {
                             ? [...Array(10)].map((_, index) => (
                                 <Skeleton key={index}/>
                             ))
-                            : allPins?.map((pin) => <PinItem key={pin._id} {...pin}/>)
+                            : allPins?.map(pin => <PinItem key={pin._id} {...pin}/>)
                         }
                     </Masonry>
                 ) : (
@@ -59,7 +62,7 @@ const Feed = () => {
                             ? [...Array(10)].map((_, index) => (
                                 <Skeleton key={index}/>
                             ))
-                            : popularPins?.map((pin) => <PinItem key={pin._id} {...pin}/>)
+                            : popularPins?.map(pin => <PinItem key={pin._id} {...pin}/>)
                         }
                     </Masonry>
                 )
@@ -68,4 +71,4 @@ const Feed = () => {
     )
 }
 
-export default Feed
+export default DefaultFeed

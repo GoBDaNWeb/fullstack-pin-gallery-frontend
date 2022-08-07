@@ -25,7 +25,7 @@ const PinItem: React.FC<IPinItemProps> = memo(({_id, author, description, imageU
         <Link to={`/pin/${_id}`}>
             <div className='max-w-[350px] group relative overflow-hidden cursor-pointer transition-all duration-500 shadow-md my-2 mx-1 rounded-lg '>
                 <div className='bg-black bg-opacity-0 group-hover:bg-opacity-25 absolute top-0 bottom-0 right-0 left-0 transition-all duration-500'></div>
-                <img src={`${process.env.REACT_APP_API_URL}${imageUrl}`} alt='pin'/>
+                <img src={`${process.env.REACT_APP_API_URL}${imageUrl}`} alt='pin' className='bg-gray-200'/>
                 <div onClick={navigateToProfile} >
                     <UserData author={author}/>
                 </div>

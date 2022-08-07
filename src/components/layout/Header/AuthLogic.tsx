@@ -11,12 +11,18 @@ import {logout} from '@redux/user/userSlice'
 // * icons/logo
 import {BiImageAdd} from 'react-icons/bi'
 
+// * components 
+import UserAvatar from '@components/shared/UserAvatar'
 
 const AuthLogic = memo(() => {
     const isAuth = useSelector(selectAuth)
     const currentUser = useSelector(selectAuthData)
 
     const dispatch = useAppDispatch()
+
+    const handleLogout = (): void => {
+        dispatch(logout())
+    }
     
     return (
         <>
@@ -28,23 +34,13 @@ const AuthLogic = memo(() => {
                             <BiImageAdd/>
                         </Link>
                         <Link to={`/profile/${currentUser?._id}`}>
-                            {
-                                currentUser?.avatarUrl
-                                ? (
-                                    <img 
-                                        src={`${process.env.REACT_APP_API_URL}${currentUser?.avatarUrl}`} 
-                                        alt="avatar" 
-                                        className='w-10 h-10 rounded-full shadow-md'
-                                    />
-                                ) : (
-                                    <div className='w-10 h-10 bg-sky-500 rounded-full shadow-md flex items-center justify-center text-white font-semibold text-xl'>
-                                        {currentUser?.firstName[0].toUpperCase()}
-                                    </div>
-                                ) 
-                            }
+                           <UserAvatar
+                                avatarUrl={currentUser?.avatarUrl}
+                                firstName={currentUser?.firstName}
+                           />
                         </Link>
                         <div 
-                            onClick={() => dispatch(logout())}
+                            onClick={handleLogout}
                             className='cursor-pointer'
                         >
                             Выход

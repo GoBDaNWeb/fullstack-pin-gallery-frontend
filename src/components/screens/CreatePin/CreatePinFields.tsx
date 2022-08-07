@@ -1,23 +1,23 @@
 // * react
-import React, {useState} from 'react'
+import React, { memo, useState, useCallback} from 'react'
 import {useNavigate} from 'react-router-dom'
+import {ICreatePinFieldsProps} from './types'
 
 // * redux
-import {useAddPinMutation} from '@redux/pin/pinApi'
+import {useAddPinMutation} from '@services/pin/pinApi'
 
 // * components 
 import Button from '@components/UI/Button'
 import Input from '@components/UI/Input'
 
-const CreatePinFields = ({imageUrl}: {imageUrl: string}) => {
+const CreatePinFields: React.FC<ICreatePinFieldsProps> = memo(({pinImage}) => {
     const [title, setTitle] = useState<string>('')
     const [description, setDescription] = useState<string>('')
-
+    const navigate = useNavigate()
     const [addPin] = useAddPinMutation()
 
-    const navigate = useNavigate()
 
-    const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const handleChangeValue = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
         const {value} = e.target
         const {name} = e.target
         if (name === 'title') {
@@ -26,11 +26,11 @@ const CreatePinFields = ({imageUrl}: {imageUrl: string}) => {
         if (name === 'description') {
             setDescription(value)
         }
-    }
+    }, [])
 
     const createPin = async () => {
         const pinParams = {
-            imageUrl,
+            pinImage,
             title,
             description,
         }
@@ -61,6 +61,6 @@ const CreatePinFields = ({imageUrl}: {imageUrl: string}) => {
             />
         </>
     )
-}
+})
 
 export default CreatePinFields

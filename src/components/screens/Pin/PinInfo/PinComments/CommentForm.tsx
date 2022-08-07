@@ -1,15 +1,14 @@
 // * react 
 import React, {useState, memo} from 'react'
 import {useParams} from 'react-router-dom'
-import {IComment} from '../../types'
 
 // * redux 
 import {useSelector} from 'react-redux'
-import {useGetCommentsQuery, useAddCommentMutation} from '@redux/comment/commentApi'
+import {useGetCommentsQuery, useAddCommentMutation} from '@services/comment/commentApi'
 import {selectAuthData} from '@redux/user/selectors'
 
 // * components 
-import UserAvatar from '../UserAvatar'
+import UserAvatar from '@components/shared/UserAvatar'
 import Input from '@components/UI/Input'
 
 const CommentForm = () => {
@@ -18,7 +17,7 @@ const CommentForm = () => {
     const currentUser = useSelector(selectAuthData)
     const {id} = useParams()
 
-    const {data: comments, refetch: refetchComments} = useGetCommentsQuery(id)
+    const {refetch: refetchComments} = useGetCommentsQuery(id)
 
     const [addComment] = useAddCommentMutation()
 

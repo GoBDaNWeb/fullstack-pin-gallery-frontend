@@ -1,6 +1,6 @@
 // * redux
-import {selectIsOpenMobileMenu} from '@redux/user/selectors'
 import {useSelector} from 'react-redux'
+import {selectIsOpenMobileMenu} from '@redux/user/selectors'
 
 // * components 
 import AuthLogic from './AuthLogic'

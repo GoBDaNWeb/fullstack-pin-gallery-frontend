@@ -1,17 +1,15 @@
 // * react 
 import React, {useState, memo} from 'react'
 import {useParams} from 'react-router-dom'
-import {IComment} from '../../types'
 
 // * redux 
 import {useSelector} from 'react-redux'
-import {useGetCommentsQuery, useAddCommentMutation} from '@redux/comment/commentApi'
+import {useGetCommentsQuery, useAddCommentMutation} from '@services/comment/commentApi'
 import {selectAuthData} from '@redux/user/selectors'
 
 // * components 
 import CommentForm from './CommentForm'
 import Comment from './Comment'
-import Input from '@components/UI/Input'
 
 const Comments = () => {
     const [textComment, setTextComment] = useState<string>('')

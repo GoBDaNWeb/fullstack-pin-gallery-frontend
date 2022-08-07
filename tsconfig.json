@@ -11,7 +11,8 @@
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
       "@assets/*": ["assets/*"],
-      "@redux/*": ["redux/*"]
+      "@redux/*": ["redux/*"],
+      "@services/*": ["services/*"],
     },
     "allowJs": true,
     "skipLibCheck": true,

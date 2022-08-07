@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import {setCurrentPin} from './pinSlice'
+import {setCurrentPin} from '@redux/pin/pinSlice'
 import {IPinQueryResponse, ICreatePinQuery} from './types'
 
 const baseQuery = fetchBaseQuery({

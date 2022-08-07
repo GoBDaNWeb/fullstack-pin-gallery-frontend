@@ -1,18 +1,10 @@
 // * react
-import React, {useEffect, useState, memo} from 'react'
-import {useLocation} from 'react-router-dom'
-import {IPinItemProps, IPinedLogicProps} from '../types'
+import React, {memo} from 'react'
+import {IPinItemProps} from '../types'
 
 // * redux
 import {useSelector} from 'react-redux'
-import {useAppDispatch} from '@redux/store'
-import {useUpdateUserSavePinMutation, useUpdateUserRemovePinMutation, useLazyGetAuthMeQuery} from '@redux/user/userApi'
-import {useLazyGetPinedQuery} from '@redux/pin/pinApi'
 import {selectAuthData} from '@redux/user/selectors'
-import {handleOpenModal} from '@redux/user/userSlice'
-
-// * icons
-import {TbPin, TbPinnedOff} from 'react-icons/tb'
 
 // * components 
 import PinedLogic from './PinedLogic'

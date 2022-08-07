@@ -1,9 +1,11 @@
 // * react
+import {memo} from 'react'
 import {Link, Navigate} from 'react-router-dom'
+import {ILoginProps} from '../types'
 
-// * redux
-import {selectAuth} from '@redux/user/selectors'
+// * redux 
 import {useSelector} from 'react-redux'
+import {selectAuth} from '@redux/user/selectors'
 
 // * icons
 import {TbArrowBackUp} from 'react-icons/tb'
@@ -11,7 +13,7 @@ import {TbArrowBackUp} from 'react-icons/tb'
 // * components 
 import LoginFields from './LoginFields'
 
-const Login = ({changeAuthHandle}: {changeAuthHandle: () => void}) => {
+const Login: React.FC<ILoginProps> = memo(({changeAuthHandle}) => {
     const isAuth = useSelector(selectAuth)
 
     if (isAuth) {
@@ -38,6 +40,6 @@ const Login = ({changeAuthHandle}: {changeAuthHandle: () => void}) => {
             </h6>
         </div>
     )
-}
+})
 
 export default Login

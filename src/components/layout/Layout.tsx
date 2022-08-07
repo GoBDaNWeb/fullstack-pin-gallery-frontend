@@ -11,7 +11,7 @@ import Header from './Header'
 import NonAuthModal from './NonAuthModal'
 
 const Layout = ({children}: {children: React.ReactNode}) => {
-    const location = useLocation()
+	const location = useLocation()
 	const isAuth = useSelector(selectAuth)
 	const isOpenModal = useSelector(selectIsOpenModal)
 
