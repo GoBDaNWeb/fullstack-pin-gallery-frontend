@@ -14,8 +14,8 @@ import {AiOutlineClose} from 'react-icons/ai'
 import {BiMenu} from 'react-icons/bi'
 
 // * components 
-import AuthLogic from './AuthLogic'
-import MobileMenu from './MobileMenu'
+import AuthLogic from './components/AuthLogic'
+import MobileMenu from './components/MobileMenu'
 
 const Header = memo(() => {
     const isOpenMenu = useSelector(selectIsOpenMobileMenu)

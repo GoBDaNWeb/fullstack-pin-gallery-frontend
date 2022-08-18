@@ -1,6 +1,6 @@
 // * components
-import Feed from '@components/shared/Feed'
-import Avatar from './Avatar'
+import Feed from '@components/common/Feed'
+import Avatar from './components/Avatar'
 
 const UserProfile = () => {
     return (

@@ -13,6 +13,7 @@
       "@assets/*": ["assets/*"],
       "@redux/*": ["redux/*"],
       "@services/*": ["services/*"],
+      "@hooks/*": ["hooks/*"],
     },
     "allowJs": true,
     "skipLibCheck": true,

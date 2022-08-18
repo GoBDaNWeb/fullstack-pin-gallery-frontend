@@ -1,5 +1,5 @@
 // * components 
-import Feed from '@components/shared/Feed'
+import Feed from '@components/common/Feed'
 
 const Main = () => {
     return (

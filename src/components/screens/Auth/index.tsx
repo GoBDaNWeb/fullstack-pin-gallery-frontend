@@ -2,8 +2,8 @@
 import {memo, useState, useCallback} from 'react'
 
 // * components
-import Login from './Login/index'
-import Register from './Register/index'
+import Login from './components/Login/index'
+import Register from './components/Register/index'
 
 const Auth = memo(() => {
     const [isLogin, setIsLogin] = useState(true)

@@ -6,8 +6,8 @@ import {useParams} from 'react-router-dom'
 import {useGetOnePinQuery} from '@services/pin/pinApi'
 
 // *components
-import Feed from '@components/shared/Feed'
-import PinInfo from './PinInfo'
+import Feed from '@components/common/Feed'
+import PinInfo from './components/PinInfo'
 
 const Pin = memo(() => {
     const {id} = useParams()

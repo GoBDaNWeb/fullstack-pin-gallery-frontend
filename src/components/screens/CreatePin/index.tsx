@@ -8,11 +8,11 @@ import {useAddUploadPinMutation} from '@services/pin/pinApi'
 import {selectAuth} from '@redux/user/selectors'
 
 // * hooks 
-import {useUploadImage} from '../../../hooks/useUploadImage'
+import {useUploadImage} from '@hooks/useUploadImage'
 
 // * components 
-import CreatePinImg from './CreatePinImg'
-import CreatePinFields from './CreatePinFields'
+import CreatePinImg from './components/CreatePinImg'
+import CreatePinFields from './components/CreatePinFields'
 
 export const CreatePin = () => {
     const [uploadPin] = useAddUploadPinMutation()
