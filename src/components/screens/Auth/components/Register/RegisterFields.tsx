@@ -14,6 +14,7 @@ import {MdPhotoCamera} from 'react-icons/md'
 
 // * components 
 import Input from '@components/ui/Input'
+import AuthButton from '@components/ui/AuthButton';
 
 const RegisterFields = memo(() => {
     const [firstName, setFirstName] = useState<string>('')
@@ -40,21 +41,11 @@ const RegisterFields = memo(() => {
     const handleChangeValue = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
         const {value} = e.target
         const {name} = e.target
-        if (name === 'firstName') {
-            setFirstName(value)
-        }
-        if (name === 'lastName') {
-            setLastName(value)
-        }
-        if (name === 'email') {
-            setEmail(value)
-        }
-        if (name === 'password') {
-            setPassword(value)
-        }
-        if (name === 'confirmPassword') {
-            setConfirmPassword(value)
-        }
+        name === 'firstName' && setFirstName(value)
+        name === 'lastName' && setLastName(value)
+        name === 'email' && setEmail(value)
+        name === 'password' && setPassword(value)
+        name === 'confirmPassword' && setConfirmPassword(value)
     }, [])
 
     const handleRegister = async(): Promise<void> => {
@@ -73,7 +64,7 @@ const RegisterFields = memo(() => {
             window.localStorage.setItem('token', registerResponse.token)
             dispatch(setUser(registerResponse))
 		} catch (err) {
-			console.log(err);
+			console.error(err);
 		}
     }
     return (
@@ -136,13 +127,12 @@ const RegisterFields = memo(() => {
                 />
                 
             </div>
-            <button 
-                onClick={handleRegister}
-                className='px-4 py-1 bg-gray-100 rounded-full disabled:opacity-50 disabled:pointer-events-none'
-                disabled={disabledCondition}
+            <AuthButton
+                fn={handleRegister}
+                disable={disabledCondition}
             >
                 зарегестрироваться
-            </button>
+            </AuthButton>
         </div>
     )
 })
