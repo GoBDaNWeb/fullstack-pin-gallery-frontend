@@ -1,4 +1,4 @@
 export interface IAuthButton {
-    fn: () => void, 
-    disable: boolean,
+    fn: () => void;
+    disable: boolean;
 }

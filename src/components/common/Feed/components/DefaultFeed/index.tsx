@@ -1,16 +1,19 @@
 // * react
-import {useEffect} from 'react'
-import Masonry from 'react-masonry-css'
+import { useEffect } from 'react';
+import Masonry from 'react-masonry-css';
 
-// * redux 
-import {useSelector} from 'react-redux'
-import {selectPins} from '@redux/pin/selectors'
-import {useGetAllPinsQuery, useGetPopularPinsQuery} from '@services/pin/pinApi'
+// * redux
+import { useSelector } from 'react-redux';
+import { selectPins } from '@redux/pin/selectors';
+import {
+    useGetAllPinsQuery,
+    useGetPopularPinsQuery,
+} from '@services/pin/pinApi';
 
-// * components 
-import Buttons from './Buttons'
-import Skeleton from './Skeleton'
-import PinItem from '@components/common/PinItem'
+// * components
+import PinItem from '@components/common/PinItem';
+import Buttons from './Buttons';
+import Skeleton from './Skeleton';
 
 const breakpointColumnsObj = {
     default: 4,
@@ -22,53 +25,73 @@ const breakpointColumnsObj = {
 };
 
 const DefaultFeed = () => {
-    const {isNewPins} = useSelector(selectPins)
+    const { isNewPins } = useSelector(selectPins);
 
-
-    const {data: allPins, refetch: refetchAllPins, isLoading: isLoadingAll} = useGetAllPinsQuery()
-    const {data: popularPins, refetch: refetchPopularPins, isLoading: isLoadingPopular} = useGetPopularPinsQuery()
+    const {
+        data: allPins,
+        refetch: refetchAllPins,
+        isLoading: isLoadingAll,
+    } = useGetAllPinsQuery();
+    const {
+        data: popularPins,
+        refetch: refetchPopularPins,
+        isLoading: isLoadingPopular,
+    } = useGetPopularPinsQuery();
 
     useEffect(() => {
-        isNewPins 
-        ? refetchAllPins()
-        : refetchPopularPins()
-    }, [isNewPins])
+        isNewPins ? refetchAllPins() : refetchPopularPins();
+    }, [isNewPins, refetchAllPins, refetchPopularPins]);
 
     return (
         <>
-            <Buttons/>
-            {
-                isNewPins 
-                ? (
-                    <Masonry
-                        breakpointCols={breakpointColumnsObj}
-                        className="flex animate-slide-fwd"
-                    >
-                        {
-                            isLoadingAll
-                            ? [...Array(10)].map((_, index) => (
-                                <Skeleton key={index}/>
-                            ))
-                            : allPins?.map(pin => <PinItem key={pin._id} {...pin}/>)
-                        }
-                    </Masonry>
-                ) : (
-                    <Masonry
-                        breakpointCols={breakpointColumnsObj}
-                        className="flex animate-slide-fwd"
-                    >  
-                        {
-                            isLoadingPopular
-                            ? [...Array(10)].map((_, index) => (
-                                <Skeleton key={index}/>
-                            ))
-                            : popularPins?.map(pin => <PinItem key={pin._id} {...pin}/>)
-                        }
-                    </Masonry>
-                )
-            }
+            <Buttons />
+            {isNewPins ? (
+                <Masonry
+                    breakpointCols={breakpointColumnsObj}
+                    className="flex animate-slide-fwd"
+                >
+                    {isLoadingAll
+                        ? [...Array(10)].map((_, index) => (
+                              // eslint-disable-next-line react/no-array-index-key
+                              <Skeleton key={index} />
+                          ))
+                        : allPins?.map((pin) => (
+                              <PinItem
+                                  key={pin._id}
+                                  _id={pin._id}
+                                  author={pin.author}
+                                  description={pin.description}
+                                  imageUrl={pin.imageUrl}
+                                  title={pin.title}
+                                  viewsCount={pin.viewsCount}
+                              />
+                          ))}
+                </Masonry>
+            ) : (
+                <Masonry
+                    breakpointCols={breakpointColumnsObj}
+                    className="flex animate-slide-fwd"
+                >
+                    {isLoadingPopular
+                        ? [...Array(10)].map((_, index) => (
+                              // eslint-disable-next-line react/no-array-index-key
+                              <Skeleton key={index} />
+                          ))
+                        : popularPins?.map((pin) => (
+                              <PinItem
+                                  key={pin._id}
+                                  _id={pin._id}
+                                  author={pin.author}
+                                  description={pin.description}
+                                  imageUrl={pin.imageUrl}
+                                  title={pin.title}
+                                  viewsCount={pin.viewsCount}
+                              />
+                          ))}
+                </Masonry>
+            )}
         </>
-    )
-}
+    );
+};
 
-export default DefaultFeed
+export default DefaultFeed;

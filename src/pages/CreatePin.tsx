@@ -1,7 +1,7 @@
-import CreatePin from '@components/screens/CreatePin'
+import CreatePin from '@components/screens/CreatePin';
 
-export const CreatePinPage = () => {
-    return <CreatePin/>
-}
+const CreatePinPage = () => {
+    return <CreatePin />;
+};
 
-export default CreatePinPage
+export default CreatePinPage;

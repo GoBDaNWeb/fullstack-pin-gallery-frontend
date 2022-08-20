@@ -1,8 +1,7 @@
-import UserProfile from "@components/screens/UserProfile"
+import UserProfile from '@components/screens/UserProfile';
 
 const UserProfilePage = () => {
-   
-    return <UserProfile/>
-}
+    return <UserProfile />;
+};
 
-export default UserProfilePage
+export default UserProfilePage;

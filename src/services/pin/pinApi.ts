@@ -1,28 +1,28 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import {setCurrentPin} from '@redux/pin/pinSlice'
-import {IPinQueryResponse, ICreatePinQuery} from './types'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { setCurrentPin } from '@redux/pin/pinSlice';
+import { IPinQueryResponse, ICreatePinQuery } from './types';
 
 const baseQuery = fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL,
-    prepareHeaders: (headers, { getState }) => {
-      const token = window.localStorage.getItem('token')
+    prepareHeaders: (headers) => {
+        const token = window.localStorage.getItem('token');
 
-      if (token) {
-        headers.set('authorization', `Bearer ${token}`)
-      }
-  
-      return headers
+        if (token) {
+            headers.set('authorization', `Bearer ${token}`);
+        }
+
+        return headers;
     },
-})
+});
 
 const baseQueryWithAuth = async (args: any, api: any, extraOptions: any) => {
-    let result: any = await baseQuery(args, api, extraOptions)
+    const result: any = await baseQuery(args, api, extraOptions);
     if (result.data && api.endpoint === 'getOnePin') {
-        api.dispatch(setCurrentPin(result?.data || null))
+        api.dispatch(setCurrentPin(result?.data || null));
     }
 
-    return result
-}
+    return result;
+};
 
 export const pinApi = createApi({
     reducerPath: 'api/pin',
@@ -47,28 +47,27 @@ export const pinApi = createApi({
             query: (params) => ({
                 url: '/post/create',
                 method: 'POST',
-                body: params
-            })
+                body: params,
+            }),
         }),
-        addUploadPin: builder.mutation<{url: string}, any>({
+        addUploadPin: builder.mutation<{ url: string }, any>({
             query: (params) => ({
                 url: '/upload',
                 method: 'POST',
-                body: params
+                body: params,
             }),
         }),
-        deletePin: builder.mutation<void, {pinId: string | undefined }>({
+        deletePin: builder.mutation<void, { pinId: string | undefined }>({
             query: (params) => ({
                 url: '/post/delete-pin',
                 method: 'DELETE',
-                body: params
+                body: params,
             }),
         }),
     }),
-})
+});
 
-
-export const { 
+export const {
     useGetPinedQuery,
     useLazyGetPinedQuery,
     useGetAllPinsQuery,
@@ -79,4 +78,4 @@ export const {
     useAddPinMutation,
     useAddUploadPinMutation,
     useDeletePinMutation,
-} = pinApi
+} = pinApi;
