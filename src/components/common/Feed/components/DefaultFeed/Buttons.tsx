@@ -1,39 +1,38 @@
-// * redux 
-import {useAppDispatch} from '@redux/store'
-import {useSelector} from 'react-redux'
-import {handleFetchPins} from '@redux/pin/pinSlice'
-import {selectPins} from '@redux/pin/selectors'
+// * redux
+import { useAppDispatch } from '@redux/store';
+import { useSelector } from 'react-redux';
+import { handleFetchPins } from '@redux/pin/pinSlice';
+import { selectPins } from '@redux/pin/selectors';
 
 // *components
-import Button from '@components/ui/Button'
-
+import Button from '@components/ui/Button';
 
 const Buttons = () => {
-    const dispatch = useAppDispatch()
-    const {isNewPins} = useSelector(selectPins)
+    const dispatch = useAppDispatch();
+    const { isNewPins } = useSelector(selectPins);
 
     const handleFetchNewPins = () => {
-        dispatch(handleFetchPins(true))
-    }
+        dispatch(handleFetchPins(true));
+    };
 
     const handleFetchPopularPins = () => {
-        dispatch(handleFetchPins(false))
-    }
-    
+        dispatch(handleFetchPins(false));
+    };
+
     return (
-        <div className='flex items-center justify-center gap-4 pb-6'>
-            <Button 
-                content={'Новые'} 
-                condition={isNewPins} 
+        <div className="flex items-center justify-center gap-4 pb-6">
+            <Button
+                content="Новые"
+                condition={isNewPins}
                 func={handleFetchNewPins}
             />
-            <Button 
-                content={'Популярные'} 
-                condition={!isNewPins} 
+            <Button
+                content="Популярные"
+                condition={!isNewPins}
                 func={handleFetchPopularPins}
             />
-        </div> 
-    )
-}
+        </div>
+    );
+};
 
-export default Buttons
+export default Buttons;

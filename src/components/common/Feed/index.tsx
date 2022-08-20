@@ -1,23 +1,13 @@
-// * react 
-import React from 'react'
-import {IFeedProps} from './types'
+// * react
+import React from 'react';
+import { IFeedProps } from './types';
 
-// * components 
-import DefaultFeed from './components/DefaultFeed'
-import ProfileFeed from './components/ProfileFeed'
+// * components
+import DefaultFeed from './components/DefaultFeed';
+import ProfileFeed from './components/ProfileFeed';
 
+const Feed: React.FC<IFeedProps> = ({ isMain }) => (
+    <>{isMain ? <DefaultFeed /> : <ProfileFeed />}</>
+);
 
-
-const Feed: React.FC<IFeedProps> = ({isMain}) => {
-    return (
-        <>
-            {
-                isMain 
-                ? <DefaultFeed/>
-                : <ProfileFeed/>
-            }
-        </>
-    )
-}
-
-export default Feed
+export default Feed;

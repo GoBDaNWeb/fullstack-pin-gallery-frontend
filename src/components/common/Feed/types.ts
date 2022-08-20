@@ -1,8 +1,8 @@
 export interface IFeedProps {
-    isMain: boolean
+    isMain: boolean;
 }
 
 export interface IProfileFeedProps {
-    isCreated: boolean, 
-    setIsCreated: React.Dispatch<React.SetStateAction<boolean>>
+    isCreated: boolean;
+    setIsCreated: React.Dispatch<React.SetStateAction<boolean>>;
 }
