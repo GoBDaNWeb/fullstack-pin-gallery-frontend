@@ -1,5 +1,5 @@
 // * react
-import React, { memo, useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 
 // * redux
 import {
@@ -19,7 +19,7 @@ import { MdPhotoCamera } from 'react-icons/md';
 import Input from '@components/ui/Input';
 import AuthButton from '@components/ui/AuthButton';
 
-const RegisterFields = memo(() => {
+const RegisterFields = () => {
     const [firstName, setFirstName] = useState<string>('');
     const [lastName, setLastName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -153,6 +153,6 @@ const RegisterFields = memo(() => {
             </AuthButton>
         </div>
     );
-});
+};
 
 export default RegisterFields;

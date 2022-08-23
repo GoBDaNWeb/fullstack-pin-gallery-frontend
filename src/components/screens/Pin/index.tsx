@@ -1,5 +1,4 @@
 // * react
-import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 
 // * redux
@@ -9,7 +8,7 @@ import { useGetOnePinQuery } from '@services/pin/pinApi';
 import Feed from '@components/common/Feed';
 import PinInfo from './components/PinInfo';
 
-const Pin = memo(() => {
+const Pin = () => {
     const { id } = useParams();
     useGetOnePinQuery(id);
 
@@ -22,6 +21,6 @@ const Pin = memo(() => {
             </div>
         </div>
     );
-});
+};
 
 export default Pin;

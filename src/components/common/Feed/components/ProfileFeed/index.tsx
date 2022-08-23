@@ -30,6 +30,7 @@ const ProfileFeed = () => {
         isLoading: isLoadingPined,
         refetch: refetchPined,
     } = useGetPinedQuery(id);
+
     const {
         data: createdItems,
         isLoading: isLoadingCreated,

@@ -1,11 +1,11 @@
 // * react
-import { memo, useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
 // * components
 import Login from './components/Login/index';
 import Register from './components/Register/index';
 
-const Auth = memo(() => {
+const Auth = () => {
     const [isLogin, setIsLogin] = useState(true);
 
     const changeAuthHandle = useCallback((): void => {
@@ -21,6 +21,6 @@ const Auth = memo(() => {
             )}
         </div>
     );
-});
+};
 
 export default Auth;

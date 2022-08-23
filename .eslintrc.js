@@ -17,6 +17,7 @@ module.exports = {
         'postcss.config.js',
         'config',
         '.eslintrc.js',
+        'build',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {

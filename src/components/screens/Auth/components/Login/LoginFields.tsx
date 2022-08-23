@@ -1,5 +1,5 @@
 // * react
-import React, { memo, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 
 // * redux
 import { useAddLoginUserMutation } from '@services/user/userApi';
@@ -10,7 +10,7 @@ import { setUser } from '@redux/user/userSlice';
 import Input from '@components/ui/Input';
 import AuthButton from '@components/ui/AuthButton';
 
-const LoginFields = memo(() => {
+const LoginFields = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, serError] = useState<string>('');
@@ -92,6 +92,6 @@ const LoginFields = memo(() => {
             </AuthButton>
         </div>
     );
-});
+};
 
 export default LoginFields;

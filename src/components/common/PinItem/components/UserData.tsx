@@ -1,9 +1,9 @@
 // * react
-import React from 'react';
+import React, { memo } from 'react';
 import UserAvatar from '@components/common/UserAvatar';
 import { IUserDataProps } from '../types';
 
-const UserData: React.FC<IUserDataProps> = ({ author }) => {
+const UserData: React.FC<IUserDataProps> = memo(({ author }) => {
     const { avatarUrl, firstName, lastName } = author;
 
     return (
@@ -14,6 +14,6 @@ const UserData: React.FC<IUserDataProps> = ({ author }) => {
             </h4>
         </div>
     );
-};
+});
 
 export default UserData;

@@ -1,5 +1,5 @@
 // * react
-import React, { useEffect, useRef, memo } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
 // * redux
@@ -18,7 +18,7 @@ import useUploadImage from '@hooks/useUploadImage';
 import UserAvatar from '@components/common/UserAvatar';
 import CurrentUserAvatar from './CurrentUserAvatar';
 
-const Avatar = memo(() => {
+const Avatar = () => {
     const { id } = useParams();
     const inputFileRef = useRef<HTMLInputElement>(null);
 
@@ -68,6 +68,6 @@ const Avatar = memo(() => {
             )}
         </>
     );
-});
+};
 
 export default Avatar;
