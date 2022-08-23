@@ -1,5 +1,5 @@
 // * react
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, memo } from 'react';
 import { useLocation } from 'react-router-dom';
 
 // * redux
@@ -10,7 +10,7 @@ import { selectAuth, selectIsOpenModal } from '@redux/user/selectors';
 import Header from './Header';
 import NonAuthModal from './NonAuthModal';
 
-const Layout: React.FC<PropsWithChildren> = ({ children }) => {
+const Layout: React.FC<PropsWithChildren> = memo(({ children }) => {
     const location = useLocation();
     const isAuth = useSelector(selectAuth);
     const isOpenModal = useSelector(selectIsOpenModal);
@@ -39,6 +39,6 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
             {children}
         </>
     );
-};
+});
 
 export default Layout;
