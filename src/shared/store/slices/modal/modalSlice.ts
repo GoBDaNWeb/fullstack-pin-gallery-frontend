@@ -23,8 +23,11 @@ const modalSlice = createSlice({
     ) => {
       state.isOpenRegisterModal = action.payload;
     },
-    handleOpenMobileMenu: (state: IModalSliceState) => {
-      state.isOpenMobileMenu = !state.isOpenMobileMenu;
+    handleOpenMobileMenu: (
+      state: IModalSliceState,
+      action: PayloadAction<boolean>
+    ) => {
+      state.isOpenMobileMenu = action.payload;
     },
   },
 });

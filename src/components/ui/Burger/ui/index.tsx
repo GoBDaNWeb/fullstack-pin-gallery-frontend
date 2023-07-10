@@ -8,11 +8,12 @@ import styles from "./styles.module.sass";
 
 const Burger = () => {
   const dispatch = useAppDispatch();
+
   const burgerIsActive = useSelector(selectIsOpenMobileMenu);
 
   return (
     <div
-      onClick={() => dispatch(handleOpenMobileMenu())}
+      onClick={() => dispatch(handleOpenMobileMenu(!burgerIsActive))}
       className={styles.burger}
     >
       <div className={burgerIsActive ? styles.active : styles.default} />

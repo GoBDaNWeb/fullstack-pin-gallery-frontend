@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import styles from "./styles.module.sass";
@@ -12,6 +12,7 @@ import { handleOpenLoginModal } from "@/shared/store/slices/modal/modalSlice";
 
 const BodyContent = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const dispatch = useAppDispatch();
   const [userLogin] = useAddLoginUserMutation();
@@ -19,6 +20,8 @@ const BodyContent = () => {
   const {
     register,
     handleSubmit,
+    watch,
+
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
@@ -26,6 +29,9 @@ const BodyContent = () => {
       password: "",
     },
   });
+
+  const watchEmail = watch("email");
+  const watchPassword = watch("password");
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
@@ -35,6 +41,7 @@ const BodyContent = () => {
         password: data.password,
       };
       const loginResponse = await userLogin(loginData).unwrap();
+
       if (!loginResponse) {
         return alert("Не удалось авторизоваться");
       }
@@ -42,10 +49,15 @@ const BodyContent = () => {
       dispatch(setUser(loginResponse));
       dispatch(handleOpenLoginModal(false));
     } catch (err: any) {
+      setError(err.data[0].msg);
     } finally {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    setError("");
+  }, [watchEmail, watchPassword]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.body}>
@@ -64,6 +76,7 @@ const BodyContent = () => {
         required
         errors={errors}
       />
+      {error ? <p className={styles.error}>{error}</p> : null}
       <div className={styles.buttonWrapper}>
         <Button func={handleSubmit(onSubmit)} disabled={isLoading}>
           Войти

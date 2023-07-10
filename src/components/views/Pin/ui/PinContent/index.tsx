@@ -52,7 +52,9 @@ const PinContent = () => {
       </h3>
       <h5 className={styles.description}>
         {isLoading ? (
-          <Skeleton customStyles={{ width: "600px", height: "150px" }} />
+          <Skeleton
+            customStyles={{ maxWidth: "600px", width: "100%", height: "150px" }}
+          />
         ) : (
           data?.description
         )}

@@ -12,6 +12,7 @@ import { handleOpenRegisterModal } from "@/shared/store/slices/modal/modalSlice"
 
 const BodyContent = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const dispatch = useAppDispatch();
   const [userRegister] = useAddRegisterUserMutation();
@@ -33,6 +34,10 @@ const BodyContent = () => {
   });
 
   const watchImage = watch("avatarUrl");
+  const watchFirstName = watch("firstName");
+  const watchLastName = watch("lastName");
+  const watchPassword = watch("password");
+  const watchEmail = watch("email");
 
   const { upload, image } = useUpload(watchImage[0], addUploadUser, undefined);
 
@@ -49,14 +54,16 @@ const BodyContent = () => {
       };
 
       const registerResponse = await userRegister(registerData).unwrap();
+
       if (!registerResponse) {
-        return alert("Не удалось авторизоваться");
+        console.log("kekelosik)");
       }
+
       window.localStorage.setItem("token", registerResponse.token);
       dispatch(setUser(registerResponse));
       dispatch(handleOpenRegisterModal(false));
     } catch (err: any) {
-      console.error(err);
+      setError(err.data[0].msg);
     } finally {
       setIsLoading(false);
     }
@@ -65,6 +72,10 @@ const BodyContent = () => {
   useEffect(() => {
     upload();
   }, [watchImage]);
+
+  useEffect(() => {
+    setError("");
+  }, [watchFirstName, watchLastName, watchPassword, watchEmail]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.body}>
@@ -106,6 +117,7 @@ const BodyContent = () => {
         required
         errors={errors}
       />
+      {error ? <p className={styles.error}>{error}</p> : null}
       <div className={styles.buttonWrapper}>
         <Button func={handleSubmit(onSubmit)} disabled={isLoading}>
           Зарегестрироваться

@@ -16,7 +16,12 @@ const UserAvatar: FC<IUserAvatarProps> = ({
       {avatarUrl ? (
         <div
           className={styles.imageWrapper}
-          style={{ height: `${size}px`, width: `${size}px` }}
+          style={{
+            height: `${size}px`,
+            width: `${size}px`,
+            minWidth: `${size}px`,
+            minHeight: `${size}px`,
+          }}
         >
           <Image
             src={`${process.env.NEXT_PUBLIC_ENV_API_URL}${avatarUrl}`}

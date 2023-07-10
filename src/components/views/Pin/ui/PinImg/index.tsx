@@ -18,6 +18,8 @@ const PinImg: FC<IPinImgProps> = ({ img, isLoading }) => {
               maxWidth: "450px",
               aspectRatio: ".8",
               width: "100%",
+              maxHeight: "600px",
+              height: "100%",
             }}
           />
         ) : (

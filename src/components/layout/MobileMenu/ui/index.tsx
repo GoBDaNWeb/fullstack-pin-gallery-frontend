@@ -9,19 +9,28 @@ import Link from "next/link";
 import { UserAvatar } from "@/components/ui/UserAvatar";
 import { selectAuthData } from "@/shared/store/slices/user/selectors";
 import { logout } from "@/shared/store/slices/user/userSlice";
+import { useRouter } from "next/router";
 
 const MobileMenu = () => {
+  const {
+    query: { id },
+  } = useRouter();
+
   const isOpen = useSelector(selectIsOpenMobileMenu);
   const dispatch = useAppDispatch();
   const currentUser = useSelector(selectAuthData);
 
   const handleOpenMenu = () => {
-    dispatch(handleOpenMobileMenu());
+    dispatch(handleOpenMobileMenu(!isOpen));
   };
 
   const handleLogout = (): void => {
     dispatch(logout());
   };
+
+  useEffect(() => {
+    dispatch(handleOpenMobileMenu(false));
+  }, [dispatch, id]);
 
   return (
     <Backdrop onClose={handleOpenMenu} isShow={isOpen} style={{ zIndex: 45 }}>
