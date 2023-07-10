@@ -1,0 +1,31 @@
+.pinComments
+    width: 100%
+    height: 100%
+    position: relative
+    h4
+        font-size: 1.5rem
+        font-weight: 600
+        margin-bottom: 1rem
+    .commentsWrapper
+        width: 100%
+        height: 370px
+        overflow-y: scroll
+        scrollbar-width: thin
+        scrollbar-color: #141416 #1e1e20
+        &::-webkit-scrollbar
+            width: 10px
+        .commentsList
+            display: flex
+            flex-direction: column
+            justify-content: flex-start
+            gap: 1rem
+            width: 100%
+            height: 100%
+        .emptyComments
+            display: flex
+            height: 100%
+            align-items: center
+            justify-content: center
+            font-size: 2rem
+            font-weight: 700
+            opacity: .5

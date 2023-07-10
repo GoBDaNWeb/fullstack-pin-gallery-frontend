@@ -1,0 +1,28 @@
+@import '@/styles/variables'
+
+
+.headerWrapper
+    position: sticky
+    top: 0
+    z-index: 50
+    .header
+        position: relative
+        display: flex
+        align-items: center
+        justify-content: space-between
+        gap: .75rem
+        padding-top: .5rem
+        padding-bottom: .5rem
+        background: #fff
+        height: 4rem
+        z-index: 50
+        box-shadow: $shadow-md
+        button
+            font-size: 1rem
+        .authUser
+            display: flex
+            align-items: center
+            gap: 2rem
+            @media(max-width: $screen-sm)
+                display: none
+            

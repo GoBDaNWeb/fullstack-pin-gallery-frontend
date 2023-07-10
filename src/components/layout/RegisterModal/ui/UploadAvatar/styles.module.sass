@@ -1,0 +1,25 @@
+@import '@/styles/variables'
+    
+.upload
+    border-radius: $rounded-full
+    width: 80px
+    height: 80px
+    background: $neutral-color
+    position: relative
+    overflow: hidden
+    display: flex
+    align-items: center
+    justify-content: center
+    .imageWrapper
+        img
+            object-fit: cover
+    input
+        position: absolute
+        opacity: 0
+        width: 100%
+        height: 100%
+        cursor: pointer
+    .icon
+        opacity: .5
+        font-size: 2rem
+        position: absolute

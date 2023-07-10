@@ -1,0 +1,66 @@
+@import '@/styles/variables'
+    
+.burger 
+    cursor: pointer
+    height: 20px
+    width: 32px
+    display: flex
+    align-items: center
+    position: relative
+    .default 
+        transition: 300ms ease
+        width: 32px
+        height: 2px
+        background: #000
+        &:before 
+            transition: 300ms ease
+            content: ''
+            top: 0
+            position: absolute
+            width: 32px
+            height: 2px
+            background: #000
+        
+        &:after 
+            transition: 300ms ease
+            content: ''
+            bottom: 0
+            position: absolute
+            width: 32px
+            height: 2px
+            background: #000
+        
+    
+    .active 
+        transition: 300ms ease
+        width: 0
+        height: 2px
+        background: #000
+        &:before 
+            transition: 300ms ease
+            content: ''
+            top: 8px
+            position: absolute
+            width: 32px
+            transform: rotate(45deg)
+            height: 2px
+            background: #000
+        
+        &:after 
+            transition: 300ms ease
+            content: ''
+            bottom: 10px
+            position: absolute
+            width: 32px
+            height: 2px
+            transform: rotate(-45deg)
+            background: #000
+        
+    
+
+
+@media(min-width: $screen-sm) 
+    .burger 
+        display: none
+    
+
