@@ -9,7 +9,7 @@ import {
   useAddPinMutation,
   useAddUploadPinMutation,
   useGetAuthMeQuery,
-} from "@/api";
+} from "@/shared/api";
 
 import styles from "./styles.module.sass";
 

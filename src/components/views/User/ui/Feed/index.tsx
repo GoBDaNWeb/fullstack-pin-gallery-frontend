@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import { useGetCreatedQuery, useGetPinedQuery } from "@/api";
+import { useGetCreatedQuery, useGetPinedQuery } from "@/shared/api";
 
 import styles from "./styles.module.sass";
 

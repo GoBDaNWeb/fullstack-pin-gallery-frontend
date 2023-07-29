@@ -1,5 +1,10 @@
-import { useLazyGetAuthMeQuery, useUpdateUserAvatarMutation } from "@/api";
 import { useState } from "react";
+
+import {
+  useLazyGetAuthMeQuery,
+  useUpdateUserAvatarMutation,
+} from "@/shared/api";
+import { IUser } from "../types/user.interface";
 
 interface IRespose {
   upload: () => Promise<void>;
@@ -8,30 +13,22 @@ interface IRespose {
 }
 
 const useUpload = (
-  imageObj: any,
+  imageObj: File,
   uploadFunc: any,
-  currentUser?: any
+  currentUser?: IUser
 ): IRespose => {
   const [image, setImage] = useState("");
   const [updateUserAvatar] = useUpdateUserAvatarMutation();
   const [fetchCurrentUser] = useLazyGetAuthMeQuery();
 
-  // console.log("imageObj", imageObj);
-  // console.log("uploadFunc", uploadFunc);
-  // console.log("updateAvatar", updateAvatar);
-  // console.log("currentUser", currentUser);
-
-  const upload = async (): Promise<any> => {
-    // console.log("imageObj", imageObj);
-    // console.log("currentUserUPLOAD", currentUser);
-
+  const upload = async (): Promise<void> => {
     try {
       if (!imageObj?.name) return;
       const formData = new FormData();
       formData.append("image", imageObj);
-      const uploadData = await uploadFunc(formData).unwrap();
-      // console.log("uploadData", uploadData);
+      console.log("formData", formData);
 
+      const uploadData = await uploadFunc(formData).unwrap();
       if (currentUser) {
         updateUserAvatar({
           userId: currentUser._id,

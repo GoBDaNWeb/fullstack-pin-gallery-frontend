@@ -1,14 +1,21 @@
-import { useAddRegisterUserMutation, useAddUploadUserMutation } from "@/api";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { useAppDispatch } from "@/shared/store";
-import { setUser } from "@/shared/store/slices/user/userSlice";
 import { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import styles from "./styles.module.sass";
-import UploadAvatar from "../UploadAvatar";
-import useUpload from "@/shared/hooks/useUpload";
+
+import {
+  useAddRegisterUserMutation,
+  useAddUploadUserMutation,
+} from "@/shared/api";
 import { handleOpenRegisterModal } from "@/shared/store/slices/modal/modalSlice";
+import { useAppDispatch } from "@/shared/store";
+
+import styles from "./styles.module.sass";
+
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { setUser } from "@/shared/store/slices/user/userSlice";
+import useUpload from "@/shared/hooks/useUpload";
+import UploadAvatar from "../UploadAvatar";
+import { ErrorType, IError } from "@/shared/types/error.interface";
 
 const BodyContent = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -55,15 +62,13 @@ const BodyContent = () => {
 
       const registerResponse = await userRegister(registerData).unwrap();
 
-      if (!registerResponse) {
-        console.log("kekelosik)");
-      }
-
       window.localStorage.setItem("token", registerResponse.token);
       dispatch(setUser(registerResponse));
       dispatch(handleOpenRegisterModal(false));
-    } catch (err: any) {
-      setError(err.data[0].msg);
+    } catch (err: unknown) {
+      const error = err as IError;
+      console.log(error);
+      setError(error.data[0].msg);
     } finally {
       setIsLoading(false);
     }
@@ -119,9 +124,7 @@ const BodyContent = () => {
       />
       {error ? <p className={styles.error}>{error}</p> : null}
       <div className={styles.buttonWrapper}>
-        <Button func={handleSubmit(onSubmit)} disabled={isLoading}>
-          Зарегестрироваться
-        </Button>
+        <Button disabled={isLoading}>Зарегестрироваться</Button>
       </div>
     </form>
   );

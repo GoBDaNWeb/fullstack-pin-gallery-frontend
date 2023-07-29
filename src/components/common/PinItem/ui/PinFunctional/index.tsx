@@ -9,7 +9,7 @@ import {
   useLazyGetPinedQuery,
   useUpdateUserRemovePinMutation,
   useUpdateUserSavePinMutation,
-} from "@/api";
+} from "@/shared/api";
 import { useAppDispatch } from "@/shared/store";
 import { handleOpenLoginModal } from "@/shared/store/slices/modal/modalSlice";
 

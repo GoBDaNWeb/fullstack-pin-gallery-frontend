@@ -1,5 +1,5 @@
 export interface IButtonProps {
-  func: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  func?: any;
   disabled?: boolean;
   active?: boolean;
 }

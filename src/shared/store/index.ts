@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
-import { userApi } from "@/api";
-import { pinApi } from "@/api";
-import { commentApi } from "@/api";
+import { userApi } from "@/shared/api";
+import { pinApi } from "@/shared/api";
+import { commentApi } from "@/shared/api";
 import { pinReducer } from "./slices/pin/pinSlice";
 import { userReducer } from "./slices/user/userSlice";
 import { modalReducer } from "./slices/modal/modalSlice";

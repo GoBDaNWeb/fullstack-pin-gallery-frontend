@@ -1,12 +1,16 @@
-import { useGetAuthMeQuery } from "@/api";
+import type { AppProps } from "next/app";
+import { Inter } from "next/font/google";
+
+import { useGetAuthMeQuery } from "@/shared/api";
+import { wrapper } from "@/shared/store";
+
+import "@/styles/index.sass";
+
 import { Header } from "@/components/layout/Header";
 import { LoginModal } from "@/components/layout/LoginModal";
 import { RegisterModal } from "@/components/layout/RegisterModal";
-import { wrapper } from "@/shared/store";
-import "@/styles/index.sass";
-import type { AppProps } from "next/app";
-import { Inter } from "next/font/google";
 import { MobileMenu } from "@/components/layout/MobileMenu";
+
 const inter = Inter({ subsets: ["latin"] });
 
 const App = ({ Component, pageProps }: AppProps) => {

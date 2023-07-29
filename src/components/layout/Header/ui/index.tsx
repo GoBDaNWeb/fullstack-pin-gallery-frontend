@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { selectAuthData } from "@/shared/store/slices/user/selectors";
 import { useAppDispatch } from "@/shared/store";
 import { handleOpenLoginModal } from "@/shared/store/slices/modal/modalSlice";
-import { useGetAuthMeQuery } from "@/api";
+import { useGetAuthMeQuery } from "@/shared/api";
 
 import styles from "./styles.module.sass";
 

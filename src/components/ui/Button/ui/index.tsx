@@ -1,8 +1,10 @@
 import { FC, PropsWithChildren } from "react";
 
+import { IButtonProps } from "../types/button.interface";
+
 import styles from "./styles.module.sass";
 
-const Button: FC<PropsWithChildren<any>> = ({
+const Button: FC<PropsWithChildren<IButtonProps>> = ({
   func,
   children,
   disabled,
@@ -10,7 +12,9 @@ const Button: FC<PropsWithChildren<any>> = ({
 }) => {
   const onClick = () => {
     if (disabled) return;
-    func();
+    if (func) {
+      func();
+    }
   };
 
   return (

@@ -4,7 +4,7 @@ import styles from "./styles.module.sass";
 
 import Comment from "../Comment";
 import CommentForm from "../CommentForm";
-import { useGetCommentsQuery } from "@/api";
+import { useGetCommentsQuery } from "@/shared/api";
 import { useSelector } from "react-redux";
 import { selectAuthData } from "@/shared/store/slices/user/selectors";
 import { useEffect } from "react";

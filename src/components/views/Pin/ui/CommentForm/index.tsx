@@ -1,11 +1,14 @@
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+
+import { selectAuthData } from "@/shared/store/slices/user/selectors";
+import { useAddCommentMutation, useGetCommentsQuery } from "@/shared/api";
+
+import styles from "./styles.module.sass";
+
 import { Input } from "@/components/ui/Input";
 import { UserAvatar } from "@/components/ui/UserAvatar";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { useAddCommentMutation, useGetCommentsQuery } from "@/api";
-import { useSelector } from "react-redux";
-import { selectAuthData } from "@/shared/store/slices/user/selectors";
-import styles from "./styles.module.sass";
 
 const CommentForm = () => {
   const {

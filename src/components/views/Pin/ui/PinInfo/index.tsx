@@ -1,10 +1,13 @@
+import { useRouter } from "next/router";
+
+import { useGetOnePinQuery } from "@/shared/api";
+
 import styles from "./styles.module.sass";
 
 import PinComments from "../PinComments";
 import PinContent from "../PinContent";
 import PinImg from "../PinImg";
-import { useGetOnePinQuery } from "@/api";
-import { useRouter } from "next/router";
+
 const PinInfo = () => {
   const {
     query: { id },

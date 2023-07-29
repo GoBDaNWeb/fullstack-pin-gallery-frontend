@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 
-import { useGetUserQuery } from "@/api";
+import { useGetUserQuery } from "@/shared/api";
 import { selectAuthData } from "@/shared/store/slices/user/selectors";
 
 import styles from "./styles.module.sass";

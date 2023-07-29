@@ -3,11 +3,11 @@ import { setUser } from "@/shared/store/slices/user/userSlice";
 import {
   IRegisterQuery,
   ILoginQuery,
-  IAuthQueryResponse,
   ISavePinQuery,
   IRemovePinQuery,
   IUpdateAvatarQuery,
 } from "./types";
+import { IUser } from "@/shared/types/user.interface";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.NEXT_PUBLIC_ENV_API_URL,
@@ -36,15 +36,15 @@ export const userApi = createApi({
   baseQuery: baseQueryWithAuth,
   tagTypes: ["Auth", "Avatar"],
   endpoints: (builder) => ({
-    getAuthMe: builder.query<IAuthQueryResponse, void>({
+    getAuthMe: builder.query<IUser, void>({
       query: () => "/users/auth/me",
       providesTags: ["Auth", "Avatar"],
       keepUnusedDataFor: 0,
     }),
-    getUser: builder.query<IAuthQueryResponse, string | string[] | undefined>({
+    getUser: builder.query<IUser, string | string[] | undefined>({
       query: (id) => `/users/user/${id}`,
     }),
-    addRegisterUser: builder.mutation<IAuthQueryResponse, IRegisterQuery>({
+    addRegisterUser: builder.mutation<IUser, IRegisterQuery>({
       query: (params) => ({
         url: "/users/auth/register",
         method: "POST",
@@ -52,7 +52,7 @@ export const userApi = createApi({
       }),
       invalidatesTags: ["Auth"],
     }),
-    addLoginUser: builder.mutation<IAuthQueryResponse, ILoginQuery>({
+    addLoginUser: builder.mutation<IUser, ILoginQuery>({
       query: (params) => ({
         url: "/users/auth/login",
         method: "POST",

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import { useGetAllPinsQuery, useGetPopularPinsQuery } from "@/api";
+import { useGetAllPinsQuery, useGetPopularPinsQuery } from "@/shared/api";
 
 import styles from "./styles.module.sass";
 

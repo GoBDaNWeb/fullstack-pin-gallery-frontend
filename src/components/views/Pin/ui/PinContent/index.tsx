@@ -1,17 +1,18 @@
-import { UserAvatar } from "@/components/ui/UserAvatar";
-import { selectAuthData } from "@/shared/store/slices/user/selectors";
-import Link from "next/link";
-import { BsEyeFill } from "react-icons/bs";
-import { AiFillDelete } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import Link from "next/link";
+
 import {
   useDeletePinMutation,
   useGetOnePinQuery,
   useLazyGetOnePinQuery,
-} from "@/api";
+} from "@/shared/api";
+import { selectAuthData } from "@/shared/store/slices/user/selectors";
 
 import styles from "./styles.module.sass";
+
+import { BsEyeFill } from "react-icons/bs";
+import { UserAvatar } from "@/components/ui/UserAvatar";
 import { Skeleton } from "@/components/ui/Skeleton";
 
 const PinContent = () => {

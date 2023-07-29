@@ -6,9 +6,10 @@ import styles from "./styles.module.sass";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { useAppDispatch } from "@/shared/store";
-import { useAddLoginUserMutation } from "@/api";
+import { useAddLoginUserMutation } from "@/shared/api";
 import { setUser } from "@/shared/store/slices/user/userSlice";
 import { handleOpenLoginModal } from "@/shared/store/slices/modal/modalSlice";
+import { IError } from "@/shared/types/error.interface";
 
 const BodyContent = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -48,8 +49,11 @@ const BodyContent = () => {
       window.localStorage.setItem("token", loginResponse.token);
       dispatch(setUser(loginResponse));
       dispatch(handleOpenLoginModal(false));
-    } catch (err: any) {
-      setError(err.data[0].msg);
+    } catch (err: unknown) {
+      const error = err as IError;
+      console.log(error);
+
+      setError(error.data[0].msg);
     } finally {
       setIsLoading(false);
     }
@@ -78,9 +82,7 @@ const BodyContent = () => {
       />
       {error ? <p className={styles.error}>{error}</p> : null}
       <div className={styles.buttonWrapper}>
-        <Button func={handleSubmit(onSubmit)} disabled={isLoading}>
-          Войти
-        </Button>
+        <Button disabled={isLoading}>Войти</Button>
       </div>
     </form>
   );
