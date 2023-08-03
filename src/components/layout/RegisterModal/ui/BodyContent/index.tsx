@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import {
@@ -130,4 +130,4 @@ const BodyContent = () => {
   );
 };
 
-export default BodyContent;
+export default memo(BodyContent);

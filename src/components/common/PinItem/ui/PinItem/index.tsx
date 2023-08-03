@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, memo } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -65,4 +65,4 @@ const PinItem: FC<IPinItemProps> = ({ pin }) => {
   );
 };
 
-export default PinItem;
+export default memo(PinItem);

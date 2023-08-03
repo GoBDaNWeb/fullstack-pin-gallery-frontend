@@ -40,18 +40,22 @@ export const pinApi = createApi({
       query: (id) => `/post/${id}`,
     }),
     addPin: builder.mutation<IPinQueryResponse, ICreatePinQuery>({
-      query: (params) => ({
-        url: "/post/create",
-        method: "POST",
-        body: params,
-      }),
+      query: (params) => {
+        return {
+          url: "/post/create",
+          method: "POST",
+          body: params,
+        };
+      },
     }),
     addUploadPin: builder.mutation<{ url: string }, any>({
-      query: (params) => ({
-        url: "/upload",
-        method: "POST",
-        body: params,
-      }),
+      query: (params) => {
+        return {
+          url: "/upload",
+          method: "POST",
+          body: params,
+        };
+      },
     }),
     deletePin: builder.mutation<void, { pinId: string | string[] | undefined }>(
       {

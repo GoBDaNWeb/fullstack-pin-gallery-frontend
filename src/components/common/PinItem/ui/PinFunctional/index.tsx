@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, memo } from "react";
 import { useSelector } from "react-redux";
 
 import { IPinFunctionalProps } from "./../../types/pinFunctiona.interface";
@@ -88,4 +88,4 @@ const PinFunctional: FC<IPinFunctionalProps> = ({ pin }) => {
   );
 };
 
-export default PinFunctional;
+export default memo(PinFunctional);

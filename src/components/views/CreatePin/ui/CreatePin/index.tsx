@@ -17,8 +17,11 @@ import Fields from "../Fields";
 import PinImg from "../PinImg";
 import { Button } from "@/components/ui/Button";
 import useUpload from "@/shared/hooks/useUpload";
+import { IError } from "@/shared/types/error.interface";
 
 const CreatePin = () => {
+  const [error, setError] = useState("");
+
   const router = useRouter();
 
   const isAuth = useSelector(selectAuth);
@@ -50,15 +53,21 @@ const CreatePin = () => {
   }, [watchImage]);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const pinParams = {
-      imageUrl: image,
-      title: data.title,
-      description: data.description,
-    };
+    try {
+      const pinParams = {
+        imageUrl: image,
+        title: data.title,
+        description: data.description,
+      };
 
-    const pinData = await addPin(pinParams).unwrap();
+      const pinData = await addPin(pinParams).unwrap();
 
-    router.push(`/pin/${pinData._id}`);
+      router.push(`/pin/${pinData._id}`);
+    } catch (err: unknown) {
+      const error = err as IError;
+      console.log(error);
+      setError(error.data[0].msg);
+    }
   };
 
   const resetImage = () => {

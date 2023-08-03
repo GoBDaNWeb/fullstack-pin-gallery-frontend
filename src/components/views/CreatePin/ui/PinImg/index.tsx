@@ -15,30 +15,28 @@ const PinImg: FC<IPinImageProps> = ({
   clearImageUrl,
 }) => {
   return (
-    <>
-      <div className={styles.pinImg}>
-        {pinImage ? (
-          <div className={styles.imageWrapper}>
-            <Image
-              src={`${process.env.NEXT_PUBLIC_ENV_API_URL}${pinImage}`}
-              alt="pin upload"
-              fill
-              sizes="100vw"
-            />
-          </div>
-        ) : (
-          <div className={styles.addBtn}>
-            <MdPhotoCamera />
-          </div>
-        )}
-        {pinImage && (
-          <div onClick={clearImageUrl} className={styles.clearBtn}>
-            <AiOutlineClose />
-          </div>
-        )}
-        <input type="file" {...register(id)} />
-      </div>
-    </>
+    <div className={styles.pinImg}>
+      {pinImage ? (
+        <div className={styles.imageWrapper}>
+          <Image
+            src={`${process.env.NEXT_PUBLIC_ENV_API_URL}${pinImage}`}
+            alt="pin upload"
+            fill
+            sizes="100vw"
+          />
+        </div>
+      ) : (
+        <div className={styles.addBtn}>
+          <MdPhotoCamera />
+        </div>
+      )}
+      {pinImage && (
+        <div onClick={clearImageUrl} className={styles.clearBtn}>
+          <AiOutlineClose />
+        </div>
+      )}
+      <input type="file" {...register(id)} />
+    </div>
   );
 };
 

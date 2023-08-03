@@ -26,7 +26,6 @@ const useUpload = (
       if (!imageObj?.name) return;
       const formData = new FormData();
       formData.append("image", imageObj);
-      console.log("formData", formData);
 
       const uploadData = await uploadFunc(formData).unwrap();
       if (currentUser) {
@@ -37,8 +36,8 @@ const useUpload = (
         fetchCurrentUser();
       }
       setImage(uploadData.url);
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
   };
 
