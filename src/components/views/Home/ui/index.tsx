@@ -29,20 +29,27 @@ const Home = () => {
   } = useGetPopularPinsQuery();
 
   useEffect(() => {
-    refetchPopularPins();
-  }, [id, refetchPopularPins]);
-
-  useEffect(() => {
     refetchAllPins();
-  }, [id, refetchAllPins]);
+    refetchPopularPins();
+  }, [id, refetchAllPins, refetchPopularPins]);
+
+  const handleChangePins = (type: "all" | "popular") => {
+    if (type === "all") {
+      seAllPins(true);
+      refetchAllPins();
+    } else if (type === "popular") {
+      seAllPins(false);
+      refetchPopularPins();
+    }
+  };
 
   return (
     <div className={`${styles.home} container`}>
       <div className={styles.btnsWrapper}>
-        <Button func={() => seAllPins(true)} active={isAllPins}>
+        <Button func={() => handleChangePins("all")} active={isAllPins}>
           Все
         </Button>
-        <Button func={() => seAllPins(false)} active={!isAllPins}>
+        <Button func={() => handleChangePins("popular")} active={!isAllPins}>
           Популярные
         </Button>
       </div>
